@@ -1,7 +1,7 @@
 For any help please contact [Coulee Techlink]( http://www.couleetechlink.com ) if you need any help with crm42
 or email crm42@couleetechlink.com
 
-crm42
+crm42 ( beta )
 =====
 
 The crm that is the answer to life the universe and everything 
