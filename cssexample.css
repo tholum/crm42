@@ -1,0 +1,27 @@
+/* 
+    Document   : cssexample
+    Created on : Jan 6, 2012, 10:05:15 AM
+    Author     : tholum
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.emaildashboard_menutitle {
+    font-weight: bold;
+    font-size: 10px;
+}
+.emaildashboard_menudate{
+    font-size: 10px
+}
+.emaildashboard_menutime{
+    font-size: 8px;
+}
+.emaildashboard_menusubject{
+    font-size: 8px;
+    color: green;
+}

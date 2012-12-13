@@ -1,0 +1,1 @@
+<?php echo  ucfirst( $info['field'] ) . ' matches '  . $info['info']; ?>

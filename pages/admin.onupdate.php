@@ -1,0 +1,1 @@
+function( root , response ){ run_on_start();$('.single_accordion').click(); }

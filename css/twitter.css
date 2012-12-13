@@ -1,0 +1,42 @@
+.twitter_container{
+    margin-left: 30px;  
+}
+.twitter_user{
+    background: #454b8a;
+    color: white;
+    display: inline-block;
+    width: 150px;
+    overflow: hidden;
+    text-align: right;
+}
+.twitter_message {
+    height: 22px;   
+}
+.twitter_message:hover {
+    background: #ddd;
+}
+.twitter_message:hover .twitter_text {
+    background: #ddd;
+}
+.twitter_text {
+    background: white; 
+    color: black;
+    display: inline-block;
+    overflow: hidden;
+    text-align: left;
+}
+.twitter_text:hover {
+    background: #eee;
+}
+
+.twiter_icon{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+.twitter_down {
+    background: red;
+}
+.twitter_up {
+    background: green;
+}

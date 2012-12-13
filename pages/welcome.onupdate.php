@@ -1,0 +1,1 @@
+function( root , response ){ $('.welcome_quicksearch').autocomplete({autoFocus: true,source: 'quicksearch.php' , select: function( event, ui ) {eval( ui.item.onclick );}});}

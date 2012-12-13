@@ -1,0 +1,409 @@
+/*-------------------------------------------------
+YOU CAN'T RUN BUT YOU CAN HIDE (and general)
+-------------------------------------------------*/
+
+body {
+  color: #000;
+  border-top: 5px solid #000;
+  padding-top: 20px;
+}
+
+div#Header,
+div.quick_find,
+div.button_to_add_new,
+div#recordings_header,
+a.admin,
+div#new_note_container,
+div.recording div.avatar,
+div.bottom,
+span.feed,
+a.more,
+div.new_task_wrapper,
+span.edit a,
+img.tag,
+.empty,
+div.contact_info h2 span,
+body.public_card div.actions,
+div.public_card_contact,
+div.public_card_contact_off,
+div.nubbin,
+h2.tasks_sidebar_header,
+span.other_indexes,
+div.empty_slate,
+div.frames div.overdue h2 a,
+body.parties div.page_header,
+div.search_results_header,
+body.parties .Right .col,
+div#open_bar,
+div.file_recording_container {
+	display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.Left {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 67%;
+  float: left;
+}
+
+.Right {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  float: left;
+  width: 33%;
+}
+
+.col {
+  padding: 0 20px;
+  text-align: left;
+}
+
+.container div.topmost_col {
+  padding-bottom: 0;
+  display: none;
+}
+
+.Left .col,
+.Full .col {
+  padding: 0 8px 0 0;
+  background: #fff url(/images/right-bg.gif) right repeat-y;
+}
+
+.Left .innercol,
+.Full .innercol {
+  padding: 0 20px 0 0;
+}
+
+div.page_header h1.index {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 20pt;
+}
+
+a.image, img.email_icon, a.avatar, img.avatar {
+  border: none;
+}
+
+/*-------------------------------------------------
+SIDEBAR
+-------------------------------------------------*/
+
+.Right .col {
+  border-left: 1px solid #ccc;
+  padding: 0 0 0 15px;
+}
+
+.Right .col .tasks {
+  border-bottom: 5px solid #000;
+}
+
+.Right .col .dont_print_tasks {
+  display: none;
+}
+
+.Right h2 {
+  font-family: helvetica;
+  font-size: 7pt;
+  margin: 0 0 2px 0;
+  padding: 0 0 2px 0;
+  border-bottom: 1px solid #efefef;
+  text-transform: uppercase;
+}
+
+.Right .tasks h2 {
+  margin: 0 0 1px 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.Right p, div.task div.body, .contact_info td {
+  font-family: georgia;
+  font-size: 9pt;
+  line-height: 1.3em;
+  margin: 0 0 15px 0;
+  padding: 0;
+}
+
+.Right .contact_info div.contact_methods, .Right .tasks {
+  margin-bottom: 20px;
+}
+
+.Right .contact_info th, .contact_info td {
+  padding-right: 3px;
+  vertical-align: top;
+  text-align: left;
+  font-size: 9pt;
+}
+.Right .contact_info th, .contact_info td span {
+  font-size: 6pt;
+  font-family: helvetica, arial, sans-serif;
+}
+
+.Right .contact_info th {
+  width: 35px;
+  text-align: right;
+  padding-top: 5px;
+}
+
+.Right div.background p {
+  font-size: 9pt;
+}
+
+.Right div.frames {
+  margin-bottom: 20px;
+}
+
+.Right div.task div.body {
+  margin-left: 20px;
+}
+
+.Right .contact_dates span.add_dates {
+  display: none;
+}
+
+.Right div.regarding h1 {
+}
+
+/*-------------------------------------------------
+SUBJECT
+-------------------------------------------------*/
+
+body.subject div.page_header {
+  margin-bottom: 25px;
+}
+
+div.subject_details {
+  line-height: 1.2em;
+}
+
+table.subject_header td.name h1 {
+  font-family: helvetica;
+  font-size: 16pt;
+  margin: 0 0 3px 0;
+}
+
+table.subject_header td.name {
+  font-family: helvetica;
+  font-size: 11pt;
+}
+
+table.subject_header td.icon img {
+  margin-right: 7px;
+}
+
+div.recording {
+  margin-bottom: 25px;
+}
+
+div.recording div.body p, ul.attachments li, div.email div.body {
+  font-family: georgia;
+  font-size: 10pt;
+  line-height: 1.3em;
+  margin: 0 0 15px 0;
+  padding: 0;
+}
+
+div.recordings div.email div.body blockquote {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+div.recording ul {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0 5px;
+}
+
+div.recording li {
+  margin: 0 0 2px 0;
+}
+
+div.tags div.list {
+  font-size: 9pt;
+}
+
+div.recording div.permalink, div.link_to_attached_kase {
+  font-size: 9pt;
+  font-family: helvetica;
+  padding: 0 5px 0 0;
+  margin: 0 0 2px 0;
+}
+
+div.link_to_attached_kase {
+  font-weight: bold;
+}
+
+div.link_to_attached_kase a {
+  font-weight: normal;
+}
+
+div.Right div.avatar_subject img.blank_avatar,
+div.Right div.avatar_subject img.avatar {
+  float: left;
+  margin-right: 5px;
+  clear: both;
+}
+
+div.Right div.avatar_subject h1 {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 10pt;
+  margin: 3px 0 2px 0;
+}
+
+div.Right div.avatar_subject h2 {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 8pt;
+  text-transform: none;
+  border-bottom: none;
+  font-weight: normal;
+}
+
+div.Right div.avatar_subject {
+  margin-bottom: 20px;
+}
+
+/*-------------------------------------------------
+TASKS
+-------------------------------------------------*/
+
+span.category {
+  font-weight: bold;
+  border-right: 2px solid #000;
+  padding-right: 3px;
+}
+
+div.task div.checkbox input {
+  float: left;
+}
+
+body.tasks div.task div.body {
+  margin: 0 4px 0 20px;
+  padding: 0;
+}
+
+body.tasks div.frames h2 {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12pt;
+  margin: 25px 0 5px 0;
+  padding: 0;
+}
+
+body.tasks div.body span.hover_target {
+  font-size: 11pt;
+  line-height: 1.2em;
+}
+
+body.tasks div.task {
+  padding: 0;
+  margin-bottom: 3px;
+}
+
+body.tasks div.Left {
+  width: 100%;
+}
+
+body.tasks div.hover_container {
+	margin: 0;
+	padding: 0;
+}
+
+body.tasks div.task {
+  padding: 0;
+}
+
+
+/*-------------------------------------------------
+CONTACTS LIST
+-------------------------------------------------*/
+
+body.parties div.avatar_subject img.avatar {
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+body.parties div.avatar_subject h1, body.parties div.avatar_subject h2, body.parties table.index td.contact_info a, table.index td.contact_info, table.index td.tags {
+  font-family: helvetica, arial, sans-serif;
+}
+
+body.parties div.avatar_subject h1 {
+  font-size: 12pt;
+  margin-bottom: 1px;
+  padding: 0;
+}
+
+body.parties div.avatar_subject h2 {
+  font-size: 9pt;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body.parties table.index td.contact_info a, table.index td.contact_info, table.index td.tags {
+  text-decoration: none;
+  font-size: 9pt;
+}
+
+body.parties .Left {
+  width: 100%;
+}
+
+body.parties a img {
+  border: none;
+}
+
+body.parties table.index td {
+  white-space: nowrap;
+  padding-right: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+div.parties table.index td input.checkbox {
+  display: none;
+}
+
+
+/*-------------------------------------------------
+RECORDING
+-------------------------------------------------*/
+
+body.recording div.edit_links {
+  display: none;
+}
+
+body.recording h2.no_comments_header {
+  display: none;
+}
+
+body.recording h2.comments_header {
+  font-family: helvetica;
+  font-size: 9pt;
+  margin: 20px 0 10px 0;
+  padding: 0 0 2px 0;
+  border-bottom: 2px solid #333;
+}
+
+body.recording div.page_header h1 {
+  font-family: helvetica;
+  font-size: 16pt;
+  margin: 0 0 5px 0;
+}
+
+body.recording div.page_header p {
+  font-size: 9pt;
+  font-family: helvetica;
+  padding: 0 5px 0 0;
+  margin: 0 0 2px 0;
+}
+
+div.recordings div.task_recording div.body span {
+  text-decoration: line-through;
+}

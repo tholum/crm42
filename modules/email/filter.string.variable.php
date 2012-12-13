@@ -1,0 +1,3 @@
+<?php
+$clean = $string;
+?>

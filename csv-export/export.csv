@@ -1,0 +1,3 @@
+contact_id,title,first_name,last_name,company,company_name,street_address1,city1,state1,zip1,country1,address_type1,email1,email_type1,im1,im_network1,im_type1,number1,number_type1,website1,website_type1
+"2","Programmer","Ajaz","Ahmed","1","TWA Internet Technologies Pvt. Ltd.","Gomti Nagar","Lucknow","UP","226208","India","Work","hr@twa.com","Work","gmail.com","gmail","Work","999999999","Work","www.in.com","Work"
+"6","Programmer","Rishish","Pandey","3","TWA Internet Technologies Pvt. Led.","vikasnagar","Lucknow","Utter Pradesh","226022","","Work","rishish@twamail.com","Work","gmail.com","gmail","Work","782349234234","Work","www.thewebartists.com","Work","+49 23 456789","Home","234324324324","Mobile","234324234234","Fax"

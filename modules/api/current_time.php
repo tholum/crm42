@@ -1,0 +1,1 @@
+<?php $array = array('unixtime'=> strtotime('NOW'),'date' => date("Y-m-d"),'time' => date("H:i:s"),'fulltime'=> date("Y-m-d H:i:s")); ?>

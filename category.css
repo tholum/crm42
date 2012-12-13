@@ -1,0 +1,49 @@
+/* CSS Document */
+#package_form tr th{
+ text-align:right;
+ padding-right:4px;
+ /*font-size:18px;
+  color:#700542; */
+  font-weight:bold;
+}
+#package_form tr td{
+	padding:4px;
+}
+#package_details {
+	border:1px #cccccc solid;
+	table-layout:fixed;
+}
+#package_details tr td span{
+ font-weight:bold;
+ table-layout:fixed;
+}
+#package_details tr th{
+ border-bottom:1px #cccccc solid;
+ border-right:1px #cccccc solid;
+ padding:5px 4px 5px 6px;
+ font-size:18px;
+ color:#333333;
+ background-color:#f3f3f3;
+}
+#package_details tr:hover{
+ background-color:#fdfff0;
+}
+#package_details tr td{
+	padding:6px;
+	border-bottom:1px #cccccc solid;
+	border-right:1px #cccccc solid;
+}
+h2{
+ font-size:24px;
+ border-bottom:1px #700542 solid;
+ padding:4px;
+}
+
+#package_form input[type=text], textarea, select{
+	width:100%;
+	font-size:12px;
+}
+#add_new{
+ text-align:right;
+ padding:15px;
+}

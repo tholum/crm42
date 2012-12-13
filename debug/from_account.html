@@ -1,0 +1,815 @@
+<!--[if lte IE 6]><script src="ie6/warning.js"></script><script>window.onload=function(){e("ie6/")}</script><![endif]-->  <iframe src="tab.php" class="newcall" id="phone_call" name="phone_call" style="display:none;"></iframe>
+  
+<div id="header"><ul id="main_navigation"><li class="menu_bar menu_bar_inactive menu_bar_home_button elcome"><a style="" id="home_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.elcome').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('welcome' ,{} ,  { target: 'dynamic_main'  });">Home</a></li><li class="menu_bar menu_bar_emaildashboard_button maildashboard menu_bar_inactive"><a style="" id="emaildashboard_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.maildashboard').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('emaildashboard' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){
+run_on_start();
+tinyMCE.remove_all();
+tinyMCE.init({
+            mode : 'specific_textareas',
+            editor_selector : 'mceeditor_500',
+            theme : 'advanced' ,
+            width: '500px',
+            theme_advanced_buttons1 : 'bold,italic,underline,justifyleft,justifycenter,justifyright,justifyfull,undo,redo,link,unlink,forecolor',
+            theme_advanced_buttons2 : '',
+            theme_advanced_buttons3 : ''
+});
+
+        $('.email_display_list , .email_content').css('height' , $(window).height() - ( $('.search_header').height() + $('#main_navigation').height() + 35 ) );
+
+} });">Email</a></li><li class="menu_bar menu_bar_inactive menu_bar_bucketsearch_button ucket_searchscreen"><a style="" id="bucketsearch_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.ucket_searchscreen').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('bucket_searchscreen' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){ run_on_start(); } });">Bucket Search</a></li><li class="menu_bar menu_bar_order_button rder_search menu_bar_inactive"><a style="" id="order_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.rder_search').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('order_search' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){ $('.tablesorter').tablesorter({widthFixed: true, widgets: ['zebra'], sortList: [[0,0]] } );bucket_searchscreen(); } });">Order</a></li><li class="menu_bar menu_bar_account_button ccountdashboard menu_bar_active"><a style="" id="account_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.ccountdashboard').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('accountdashboard' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){ $('.account_autocomplete').autocomplete({source: 'account_lookup.php' , select: function( event, ui ) { open_account( ui.item ); }});} });">Account</a></li><li class="menu_bar menu_bar_inactive menu_bar_case_button asedashboard"><a style="" id="case_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.asedashboard').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('casedashboard' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){run_on_start();$('.tablesorter').tablesorter({widthFixed: true, widgets: ['zebra'], sortList: [[0,0]] } );} });">Cases</a></li><li class="menu_bar menu_bar_inactive menu_bar_settings_button ettings"><a style="" id="settings_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.ettings').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('settings' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){ run_on_start(); } });">Settings</a></li><li class="menu_bar menu_bar_inactive menu_bar_admin_button dmin"><a style="" id="admin_button" onclick="$('.menu_bar').removeClass('menu_bar_active').addClass('menu_bar_inactive');$('.dmin').removeClass('menu_bar_inactive').addClass('menu_bar_active');dynamic_page.phplivex_page('admin' ,{} ,  { target: 'dynamic_main' , onUpdate: function( root , response ){ run_on_start(); } });">Admin</a></li><li class="menu_bar menu_bar_inactive menu_bar_bucket_editor"><a style="" id="bucket_editor" onclick="window.open( 'FlowChartTasks.php' , '_BLANK' )">Bucket Editor</a></li><li class="menu_bar menu_bar_inactive menu_bar_bucket_editor"><a style="" id="bucket_editor" onclick="window.open( 'signout.php' , '_SELF' )">Sign Out</a></li></ul></div><div style="width: 10px; height: 32px;"> </div>
+
+
+<div id="content_area"><div id="content_column1"><script type="text/javascript" src="phplivex.js"></script>
+<script type="text/javascript">
+var emaildash = {
+ "manage_filters": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "manage_filters"}, emaildash.manage_filters.arguments); },
+"display_add_filter": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_add_filter"}, emaildash.display_add_filter.arguments); },
+"get_all_filters": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_all_filters"}, emaildash.get_all_filters.arguments); },
+"get_description": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_description"}, emaildash.get_description.arguments); },
+"get_quialify_filter_options": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_quialify_filter_options"}, emaildash.get_quialify_filter_options.arguments); },
+"get_qualify_column_options": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_qualify_column_options"}, emaildash.get_qualify_column_options.arguments); },
+"get_filter": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_filter"}, emaildash.get_filter.arguments); },
+"new_qualify": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "new_qualify"}, emaildash.new_qualify.arguments); },
+"new_process": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "new_process"}, emaildash.new_process.arguments); },
+"delete_qualify": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "delete_qualify"}, emaildash.delete_qualify.arguments); },
+"update_filter_action": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "update_filter_action"}, emaildash.update_filter_action.arguments); },
+"delete_filter": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "delete_filter"}, emaildash.delete_filter.arguments); },
+"update_qualify": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "update_qualify"}, emaildash.update_qualify.arguments); },
+"edit_filter_process": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "edit_filter_process"}, emaildash.edit_filter_process.arguments); },
+"edit_filter_qualify": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "edit_filter_qualify"}, emaildash.edit_filter_qualify.arguments); },
+"create_new_filter": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "create_new_filter"}, emaildash.create_new_filter.arguments); },
+"display_filter": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_filter"}, emaildash.display_filter.arguments); },
+"manage_filters_inner": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "manage_filters_inner"}, emaildash.manage_filters_inner.arguments); },
+"apply_bulk_actions": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "apply_bulk_actions"}, emaildash.apply_bulk_actions.arguments); },
+"custom_bulk_owner_button": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "custom_bulk_owner_button"}, emaildash.custom_bulk_owner_button.arguments); },
+"custom_bulk_flags_button": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "custom_bulk_flags_button"}, emaildash.custom_bulk_flags_button.arguments); },
+"searchMail": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "searchMail"}, emaildash.searchMail.arguments); },
+"use_template": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "use_template"}, emaildash.use_template.arguments); },
+"delete_template": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "delete_template"}, emaildash.delete_template.arguments); },
+"create_template": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "create_template"}, emaildash.create_template.arguments); },
+"save_template": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "save_template"}, emaildash.save_template.arguments); },
+"manage_templates": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "manage_templates"}, emaildash.manage_templates.arguments); },
+"manage_templates_inner": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "manage_templates_inner"}, emaildash.manage_templates_inner.arguments); },
+"get_templates": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_templates"}, emaildash.get_templates.arguments); },
+"display_templates": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_templates"}, emaildash.display_templates.arguments); },
+"searchMail_old": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "searchMail_old"}, emaildash.searchMail_old.arguments); },
+"get_message_id_by_email": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_message_id_by_email"}, emaildash.get_message_id_by_email.arguments); },
+"get_email_by_modules": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_by_modules"}, emaildash.get_email_by_modules.arguments); },
+"get_email_address_from_module": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_address_from_module"}, emaildash.get_email_address_from_module.arguments); },
+"get_email_by_mid": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_by_mid"}, emaildash.get_email_by_mid.arguments); },
+"get_email_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_by_id"}, emaildash.get_email_by_id.arguments); },
+"get_related_mails": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_related_mails"}, emaildash.get_related_mails.arguments); },
+"get_mail_by_group": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_mail_by_group"}, emaildash.get_mail_by_group.arguments); },
+"get_email_address": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_address"}, emaildash.get_email_address.arguments); },
+"check_mid_by_group_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "check_mid_by_group_id"}, emaildash.check_mid_by_group_id.arguments); },
+"get_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_fct_by_id"}, emaildash.get_fct_by_id.arguments); },
+"get_user_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_user_by_id"}, emaildash.get_user_by_id.arguments); },
+"display_message": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_message"}, emaildash.display_message.arguments); },
+"set_archive": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "set_archive"}, emaildash.set_archive.arguments); },
+"get_dropdown": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_dropdown"}, emaildash.get_dropdown.arguments); },
+"array2options": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "array2options"}, emaildash.array2options.arguments); },
+"display_ccbox": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_ccbox"}, emaildash.display_ccbox.arguments); },
+"check_last_email": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "check_last_email"}, emaildash.check_last_email.arguments); },
+"check_status_by_mid": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "check_status_by_mid"}, emaildash.check_status_by_mid.arguments); },
+"remove_active_email": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "remove_active_email"}, emaildash.remove_active_email.arguments); },
+"set_active_email": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "set_active_email"}, emaildash.set_active_email.arguments); },
+"display_email_by_module": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_email_by_module"}, emaildash.display_email_by_module.arguments); },
+"check_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "check_fct_by_id"}, emaildash.check_fct_by_id.arguments); },
+"displayStatusImage": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "displayStatusImage"}, emaildash.displayStatusImage.arguments); },
+"check_to": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "check_to"}, emaildash.check_to.arguments); },
+"get_email_addr_by_mailbox": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_addr_by_mailbox"}, emaildash.get_email_addr_by_mailbox.arguments); },
+"save_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "save_signature_by_module"}, emaildash.save_signature_by_module.arguments); },
+"get_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_signature_by_module"}, emaildash.get_signature_by_module.arguments); },
+"display_mail_content": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_mail_content"}, emaildash.display_mail_content.arguments); },
+"getFilePath": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "getFilePath"}, emaildash.getFilePath.arguments); },
+"updateFileStatus": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "updateFileStatus"}, emaildash.updateFileStatus.arguments); },
+"get_to_address": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_to_address"}, emaildash.get_to_address.arguments); },
+"get_email_details": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_email_details"}, emaildash.get_email_details.arguments); },
+"link_module_to_case": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "link_module_to_case"}, emaildash.link_module_to_case.arguments); },
+"display_link_to_case": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_link_to_case"}, emaildash.display_link_to_case.arguments); },
+"display_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_case_by_mid"}, emaildash.display_case_by_mid.arguments); },
+"get_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_case_by_mid"}, emaildash.get_case_by_mid.arguments); },
+"get_groups_by_cases": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_groups_by_cases"}, emaildash.get_groups_by_cases.arguments); },
+"set_case": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "set_case"}, emaildash.set_case.arguments); },
+"get_files_by_message": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_files_by_message"}, emaildash.get_files_by_message.arguments); },
+"get_file_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_file_by_id"}, emaildash.get_file_by_id.arguments); },
+"get_fileinfo_by_id": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_fileinfo_by_id"}, emaildash.get_fileinfo_by_id.arguments); },
+"FlowChartDiv": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "FlowChartDiv"}, emaildash.FlowChartDiv.arguments); },
+"set_top_list": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "set_top_list"}, emaildash.set_top_list.arguments); },
+"display_manage_top_list": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_manage_top_list"}, emaildash.display_manage_top_list.arguments); },
+"display_manage_top_list_inner": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "display_manage_top_list_inner"}, emaildash.display_manage_top_list_inner.arguments); },
+"download_file": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "download_file"}, emaildash.download_file.arguments); },
+"get_posible_users_by_module": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "get_posible_users_by_module"}, emaildash.get_posible_users_by_module.arguments); },
+"displayUserModuleLink": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "displayUserModuleLink"}, emaildash.displayUserModuleLink.arguments); },
+"displayUserModuleDropDown": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "displayUserModuleDropDown"}, emaildash.displayUserModuleDropDown.arguments); },
+"updateUserInfo": function(){ return new PHPLiveX().Callback({"obj": "emaildash", "method": "updateUserInfo"}, emaildash.updateUserInfo.arguments); }
+};
+var global_task = {
+ "__call": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "__call"}, global_task.__call.arguments); },
+"set_due_date": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "set_due_date"}, global_task.set_due_date.arguments); },
+"logme": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "logme"}, global_task.logme.arguments); },
+"is_systemtask_stoped": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "is_systemtask_stoped"}, global_task.is_systemtask_stoped.arguments); },
+"json_search_fctname": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "json_search_fctname"}, global_task.json_search_fctname.arguments); },
+"set_systemtask_stop": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "set_systemtask_stop"}, global_task.set_systemtask_stop.arguments); },
+"livex_call": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "livex_call"}, global_task.livex_call.arguments); },
+"getTreeList": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getTreeList"}, global_task.getTreeList.arguments); },
+"get_contact_by_module": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "get_contact_by_module"}, global_task.get_contact_by_module.arguments); },
+"getAvalibleTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getAvalibleTask"}, global_task.getAvalibleTask.arguments); },
+"array2options": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "array2options"}, global_task.array2options.arguments); },
+"get_default_owner_by_module": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "get_default_owner_by_module"}, global_task.get_default_owner_by_module.arguments); },
+"get_posible_owners_by_module": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "get_posible_owners_by_module"}, global_task.get_posible_owners_by_module.arguments); },
+"InsertFlowChartTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "InsertFlowChartTask"}, global_task.InsertFlowChartTask.arguments); },
+"predictPathStatus": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "predictPathStatus"}, global_task.predictPathStatus.arguments); },
+"predictPathFct": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "predictPathFct"}, global_task.predictPathFct.arguments); },
+"updateFlowChartTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "updateFlowChartTask"}, global_task.updateFlowChartTask.arguments); },
+"isFCTDefaultPath": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "isFCTDefaultPath"}, global_task.isFCTDefaultPath.arguments); },
+"getPredictedData": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getPredictedData"}, global_task.getPredictedData.arguments); },
+"removeFctFromPredictedTable": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "removeFctFromPredictedTable"}, global_task.removeFctFromPredictedTable.arguments); },
+"removeCompletedFctFromPredictedTable": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "removeCompletedFctFromPredictedTable"}, global_task.removeCompletedFctFromPredictedTable.arguments); },
+"updatePredictPathStatus": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "updatePredictPathStatus"}, global_task.updatePredictPathStatus.arguments); },
+"updatePredictPathFct": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "updatePredictPathFct"}, global_task.updatePredictPathFct.arguments); },
+"totalEstDay": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "totalEstDay"}, global_task.totalEstDay.arguments); },
+"estDueDate": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "estDueDate"}, global_task.estDueDate.arguments); },
+"percentDay": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "percentDay"}, global_task.percentDay.arguments); },
+"AddFlowChartTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "AddFlowChartTask"}, global_task.AddFlowChartTask.arguments); },
+"getNextModuleInfo": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getNextModuleInfo"}, global_task.getNextModuleInfo.arguments); },
+"submit_flowchartTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "submit_flowchartTask"}, global_task.submit_flowchartTask.arguments); },
+"insertIntoGroup": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "insertIntoGroup"}, global_task.insertIntoGroup.arguments); },
+"array_exist": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "array_exist"}, global_task.array_exist.arguments); },
+"submit_flowchartTask_by_group": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "submit_flowchartTask_by_group"}, global_task.submit_flowchartTask_by_group.arguments); },
+"displayByGroupID": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "displayByGroupID"}, global_task.displayByGroupID.arguments); },
+"FlowChartDiv": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "FlowChartDiv"}, global_task.FlowChartDiv.arguments); },
+"check_permitions": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "check_permitions"}, global_task.check_permitions.arguments); },
+"displayByModuleId": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "displayByModuleId"}, global_task.displayByModuleId.arguments); },
+"getOwnerModuleName": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getOwnerModuleName"}, global_task.getOwnerModuleName.arguments); },
+"displayOwnerModuleLink": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "displayOwnerModuleLink"}, global_task.displayOwnerModuleLink.arguments); },
+"displayOwnerModuleDropDown": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "displayOwnerModuleDropDown"}, global_task.displayOwnerModuleDropDown.arguments); },
+"getGlobalTaskId": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getGlobalTaskId"}, global_task.getGlobalTaskId.arguments); },
+"updateOwnerInfo": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "updateOwnerInfo"}, global_task.updateOwnerInfo.arguments); },
+"count_win": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "count_win"}, global_task.count_win.arguments); },
+"count_win1": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "count_win1"}, global_task.count_win1.arguments); },
+"returnTaskSelectionOptions": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "returnTaskSelectionOptions"}, global_task.returnTaskSelectionOptions.arguments); },
+"task_preview": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "task_preview"}, global_task.task_preview.arguments); },
+"show_module": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "show_module"}, global_task.show_module.arguments); },
+"update_estimate": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "update_estimate"}, global_task.update_estimate.arguments); },
+"show_path": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "show_path"}, global_task.show_path.arguments); },
+"deleteall": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "deleteall"}, global_task.deleteall.arguments); },
+"saveTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveTask"}, global_task.saveTask.arguments); },
+"showSubTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "showSubTask"}, global_task.showSubTask.arguments); },
+"saveTaskSelectionOption": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveTaskSelectionOption"}, global_task.saveTaskSelectionOption.arguments); },
+"deleteTaskSelectionOption": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "deleteTaskSelectionOption"}, global_task.deleteTaskSelectionOption.arguments); },
+"showResultTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "showResultTask"}, global_task.showResultTask.arguments); },
+"saveTaskSelectionResult": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveTaskSelectionResult"}, global_task.saveTaskSelectionResult.arguments); },
+"deleteTaskSelectionResult": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "deleteTaskSelectionResult"}, global_task.deleteTaskSelectionResult.arguments); },
+"deleteTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "deleteTask"}, global_task.deleteTask.arguments); },
+"selection": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "selection"}, global_task.selection.arguments); },
+"updateSystemTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "updateSystemTask"}, global_task.updateSystemTask.arguments); },
+"insert_window": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "insert_window"}, global_task.insert_window.arguments); },
+"track_result": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "track_result"}, global_task.track_result.arguments); },
+"showLink": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "showLink"}, global_task.showLink.arguments); },
+"listDepartment": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "listDepartment"}, global_task.listDepartment.arguments); },
+"taskListing": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "taskListing"}, global_task.taskListing.arguments); },
+"getUserGroupById": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "getUserGroupById"}, global_task.getUserGroupById.arguments); },
+"taskPreviewUser": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "taskPreviewUser"}, global_task.taskPreviewUser.arguments); },
+"addTaskToModule": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "addTaskToModule"}, global_task.addTaskToModule.arguments); },
+"returnTaskSelectionOptionsUser": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "returnTaskSelectionOptionsUser"}, global_task.returnTaskSelectionOptionsUser.arguments); },
+"selectionResult": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "selectionResult"}, global_task.selectionResult.arguments); },
+"task_stats": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "task_stats"}, global_task.task_stats.arguments); },
+"insertDueDate": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "insertDueDate"}, global_task.insertDueDate.arguments); },
+"calDueDate": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "calDueDate"}, global_task.calDueDate.arguments); },
+"task_tree": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "task_tree"}, global_task.task_tree.arguments); },
+"setRootTask": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "setRootTask"}, global_task.setRootTask.arguments); },
+"add_tree": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "add_tree"}, global_task.add_tree.arguments); },
+"get_tree_objects": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "get_tree_objects"}, global_task.get_tree_objects.arguments); },
+"isDefaultPath": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "isDefaultPath"}, global_task.isDefaultPath.arguments); },
+"setPredictedPath": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "setPredictedPath"}, global_task.setPredictedPath.arguments); },
+"get_module_links": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "get_module_links"}, global_task.get_module_links.arguments); },
+"check_for_links": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "check_for_links"}, global_task.check_for_links.arguments); },
+"writeJSPlumbArea": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "writeJSPlumbArea"}, global_task.writeJSPlumbArea.arguments); },
+"returnComment": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "returnComment"}, global_task.returnComment.arguments); },
+"delete_value": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "delete_value"}, global_task.delete_value.arguments); },
+"showInLink": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "showInLink"}, global_task.showInLink.arguments); },
+"hidden_value": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "hidden_value"}, global_task.hidden_value.arguments); },
+"show": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "show"}, global_task.show.arguments); },
+"returnLink": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "returnLink"}, global_task.returnLink.arguments); },
+"display_task": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "display_task"}, global_task.display_task.arguments); },
+"saveMGTPosition": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveMGTPosition"}, global_task.saveMGTPosition.arguments); },
+"saveMGTSPosition": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveMGTSPosition"}, global_task.saveMGTSPosition.arguments); },
+"saveSystemTaskPosition": function(){ return new PHPLiveX().Callback({"obj": "global_task", "method": "saveSystemTaskPosition"}, global_task.saveSystemTaskPosition.arguments); }
+};
+var flags = {
+ "__destruct": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "__destruct"}, flags.__destruct.arguments); },
+"get_flag_color": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "get_flag_color"}, flags.get_flag_color.arguments); },
+"get_flags_by_module": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "get_flags_by_module"}, flags.get_flags_by_module.arguments); },
+"add_flag_color": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "add_flag_color"}, flags.add_flag_color.arguments); },
+"remove_flag_color": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "remove_flag_color"}, flags.remove_flag_color.arguments); },
+"edit_flag_color": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "edit_flag_color"}, flags.edit_flag_color.arguments); },
+"add_flags_by_module": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "add_flags_by_module"}, flags.add_flags_by_module.arguments); },
+"remove_flags_by_module_id": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "remove_flags_by_module_id"}, flags.remove_flags_by_module_id.arguments); },
+"add_flags_type": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "add_flags_type"}, flags.add_flags_type.arguments); },
+"display_flags_by_module_inner": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "display_flags_by_module_inner"}, flags.display_flags_by_module_inner.arguments); },
+"show_flag_link": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "show_flag_link"}, flags.show_flag_link.arguments); },
+"display_flags_by_module": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "display_flags_by_module"}, flags.display_flags_by_module.arguments); },
+"display_flags_radio": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "display_flags_radio"}, flags.display_flags_radio.arguments); },
+"get_all_flags": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "get_all_flags"}, flags.get_all_flags.arguments); },
+"display_all_flags": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "display_all_flags"}, flags.display_all_flags.arguments); },
+"flag_in_array": function(){ return new PHPLiveX().Callback({"obj": "flags", "method": "flag_in_array"}, flags.flag_in_array.arguments); }
+};
+var smtp = {
+ "connect_to_smtp": function(){ return new PHPLiveX().Callback({"obj": "smtp", "method": "connect_to_smtp"}, smtp.connect_to_smtp.arguments); },
+"send_email": function(){ return new PHPLiveX().Callback({"obj": "smtp", "method": "send_email"}, smtp.send_email.arguments); }
+};
+var case_creation = {
+ "get_defaults_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_defaults_by_module"}, case_creation.get_defaults_by_module.arguments); },
+"delete_case_type_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "delete_case_type_option"}, case_creation.delete_case_type_option.arguments); },
+"add_case_sub_type": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "add_case_sub_type"}, case_creation.add_case_sub_type.arguments); },
+"add_case_type": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "add_case_type"}, case_creation.add_case_type.arguments); },
+"manage_case_types": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_case_types"}, case_creation.manage_case_types.arguments); },
+"manage_case_types_inner": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_case_types_inner"}, case_creation.manage_case_types_inner.arguments); },
+"manage_case_types_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_case_types_option"}, case_creation.manage_case_types_option.arguments); },
+"set_case_activity": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_case_activity"}, case_creation.set_case_activity.arguments); },
+"create_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "create_case"}, case_creation.create_case.arguments); },
+"left_panel": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "left_panel"}, case_creation.left_panel.arguments); },
+"right_top_panel": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_top_panel"}, case_creation.right_top_panel.arguments); },
+"get_cases_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_cases_by_module"}, case_creation.get_cases_by_module.arguments); },
+"right_bottom_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_bottom_by_module"}, case_creation.right_bottom_by_module.arguments); },
+"right_bottom_by_case_id_array": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_bottom_by_case_id_array"}, case_creation.right_bottom_by_case_id_array.arguments); },
+"right_bottom_by_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_bottom_by_case"}, case_creation.right_bottom_by_case.arguments); },
+"create_case_by_array": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "create_case_by_array"}, case_creation.create_case_by_array.arguments); },
+"right_bottom_by_cases": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_bottom_by_cases"}, case_creation.right_bottom_by_cases.arguments); },
+"right_bottom_panel": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "right_bottom_panel"}, case_creation.right_bottom_panel.arguments); },
+"get_number_of_cases": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_number_of_cases"}, case_creation.get_number_of_cases.arguments); },
+"get_owner_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_owner_by_id"}, case_creation.get_owner_by_id.arguments); },
+"get_mail_by_case_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_mail_by_case_id"}, case_creation.get_mail_by_case_id.arguments); },
+"get_cases_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_cases_by_id"}, case_creation.get_cases_by_id.arguments); },
+"get_display_name_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_display_name_by_module"}, case_creation.get_display_name_by_module.arguments); },
+"get_notes_by_module_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_notes_by_module_id"}, case_creation.get_notes_by_module_id.arguments); },
+"GetVendorJson": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "GetVendorJson"}, case_creation.GetVendorJson.arguments); },
+"display_email_activity": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_email_activity"}, case_creation.display_email_activity.arguments); },
+"display_case_creation_panel": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_creation_panel"}, case_creation.display_case_creation_panel.arguments); },
+"set_created_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_created_case"}, case_creation.set_created_case.arguments); },
+"get_owner_name": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_owner_name"}, case_creation.get_owner_name.arguments); },
+"set_option_by_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_option_by_case"}, case_creation.set_option_by_case.arguments); },
+"display_case_options": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_options"}, case_creation.display_case_options.arguments); },
+"display_case_options_link": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_options_link"}, case_creation.display_case_options_link.arguments); },
+"get_sub_options": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_sub_options"}, case_creation.get_sub_options.arguments); },
+"display_case_type_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_type_option"}, case_creation.display_case_type_option.arguments); },
+"display_typeSubOption": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_typeSubOption"}, case_creation.display_typeSubOption.arguments); },
+"unset_sub_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "unset_sub_option"}, case_creation.unset_sub_option.arguments); },
+"display_case_sub_option_name": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_sub_option_name"}, case_creation.display_case_sub_option_name.arguments); },
+"change_order_number": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "change_order_number"}, case_creation.change_order_number.arguments); },
+"change_customer": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "change_customer"}, case_creation.change_customer.arguments); },
+"change_owner": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "change_owner"}, case_creation.change_owner.arguments); },
+"display_customer_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_customer_option"}, case_creation.display_customer_option.arguments); },
+"display_owner_option": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_owner_option"}, case_creation.display_owner_option.arguments); },
+"display_edit_case_order": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_edit_case_order"}, case_creation.display_edit_case_order.arguments); },
+"edit_case_order": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "edit_case_order"}, case_creation.edit_case_order.arguments); },
+"display_order_div": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_order_div"}, case_creation.display_order_div.arguments); },
+"display_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case"}, case_creation.display_case.arguments); },
+"display_case_creation": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_creation"}, case_creation.display_case_creation.arguments); },
+"showFlowChartTask": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "showFlowChartTask"}, case_creation.showFlowChartTask.arguments); },
+"set_note": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_note"}, case_creation.set_note.arguments); },
+"display_note_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_note_by_id"}, case_creation.display_note_by_id.arguments); },
+"manage_filters": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_filters"}, case_creation.manage_filters.arguments); },
+"display_add_filter": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_add_filter"}, case_creation.display_add_filter.arguments); },
+"get_all_filters": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_all_filters"}, case_creation.get_all_filters.arguments); },
+"get_description": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_description"}, case_creation.get_description.arguments); },
+"get_quialify_filter_options": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_quialify_filter_options"}, case_creation.get_quialify_filter_options.arguments); },
+"get_qualify_column_options": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_qualify_column_options"}, case_creation.get_qualify_column_options.arguments); },
+"get_filter": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_filter"}, case_creation.get_filter.arguments); },
+"new_qualify": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "new_qualify"}, case_creation.new_qualify.arguments); },
+"new_process": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "new_process"}, case_creation.new_process.arguments); },
+"delete_qualify": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "delete_qualify"}, case_creation.delete_qualify.arguments); },
+"update_filter_action": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "update_filter_action"}, case_creation.update_filter_action.arguments); },
+"delete_filter": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "delete_filter"}, case_creation.delete_filter.arguments); },
+"update_qualify": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "update_qualify"}, case_creation.update_qualify.arguments); },
+"edit_filter_process": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "edit_filter_process"}, case_creation.edit_filter_process.arguments); },
+"edit_filter_qualify": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "edit_filter_qualify"}, case_creation.edit_filter_qualify.arguments); },
+"create_new_filter": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "create_new_filter"}, case_creation.create_new_filter.arguments); },
+"display_filter": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_filter"}, case_creation.display_filter.arguments); },
+"manage_filters_inner": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_filters_inner"}, case_creation.manage_filters_inner.arguments); },
+"apply_bulk_actions": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "apply_bulk_actions"}, case_creation.apply_bulk_actions.arguments); },
+"custom_bulk_owner_button": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "custom_bulk_owner_button"}, case_creation.custom_bulk_owner_button.arguments); },
+"custom_bulk_flags_button": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "custom_bulk_flags_button"}, case_creation.custom_bulk_flags_button.arguments); },
+"searchMail": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "searchMail"}, case_creation.searchMail.arguments); },
+"use_template": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "use_template"}, case_creation.use_template.arguments); },
+"delete_template": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "delete_template"}, case_creation.delete_template.arguments); },
+"create_template": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "create_template"}, case_creation.create_template.arguments); },
+"save_template": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "save_template"}, case_creation.save_template.arguments); },
+"manage_templates": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_templates"}, case_creation.manage_templates.arguments); },
+"manage_templates_inner": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "manage_templates_inner"}, case_creation.manage_templates_inner.arguments); },
+"get_templates": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_templates"}, case_creation.get_templates.arguments); },
+"display_templates": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_templates"}, case_creation.display_templates.arguments); },
+"searchMail_old": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "searchMail_old"}, case_creation.searchMail_old.arguments); },
+"get_message_id_by_email": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_message_id_by_email"}, case_creation.get_message_id_by_email.arguments); },
+"get_email_by_modules": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_by_modules"}, case_creation.get_email_by_modules.arguments); },
+"get_email_address_from_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_address_from_module"}, case_creation.get_email_address_from_module.arguments); },
+"get_email_by_mid": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_by_mid"}, case_creation.get_email_by_mid.arguments); },
+"get_email_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_by_id"}, case_creation.get_email_by_id.arguments); },
+"get_related_mails": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_related_mails"}, case_creation.get_related_mails.arguments); },
+"get_mail_by_group": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_mail_by_group"}, case_creation.get_mail_by_group.arguments); },
+"get_email_address": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_address"}, case_creation.get_email_address.arguments); },
+"check_mid_by_group_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "check_mid_by_group_id"}, case_creation.check_mid_by_group_id.arguments); },
+"get_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_fct_by_id"}, case_creation.get_fct_by_id.arguments); },
+"get_user_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_user_by_id"}, case_creation.get_user_by_id.arguments); },
+"display_message": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_message"}, case_creation.display_message.arguments); },
+"set_archive": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_archive"}, case_creation.set_archive.arguments); },
+"get_dropdown": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_dropdown"}, case_creation.get_dropdown.arguments); },
+"array2options": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "array2options"}, case_creation.array2options.arguments); },
+"display_ccbox": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_ccbox"}, case_creation.display_ccbox.arguments); },
+"check_last_email": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "check_last_email"}, case_creation.check_last_email.arguments); },
+"check_status_by_mid": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "check_status_by_mid"}, case_creation.check_status_by_mid.arguments); },
+"remove_active_email": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "remove_active_email"}, case_creation.remove_active_email.arguments); },
+"set_active_email": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_active_email"}, case_creation.set_active_email.arguments); },
+"display_email_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_email_by_module"}, case_creation.display_email_by_module.arguments); },
+"check_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "check_fct_by_id"}, case_creation.check_fct_by_id.arguments); },
+"displayStatusImage": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "displayStatusImage"}, case_creation.displayStatusImage.arguments); },
+"check_to": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "check_to"}, case_creation.check_to.arguments); },
+"get_email_addr_by_mailbox": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_addr_by_mailbox"}, case_creation.get_email_addr_by_mailbox.arguments); },
+"save_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "save_signature_by_module"}, case_creation.save_signature_by_module.arguments); },
+"get_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_signature_by_module"}, case_creation.get_signature_by_module.arguments); },
+"display_mail_content": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_mail_content"}, case_creation.display_mail_content.arguments); },
+"getFilePath": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "getFilePath"}, case_creation.getFilePath.arguments); },
+"updateFileStatus": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "updateFileStatus"}, case_creation.updateFileStatus.arguments); },
+"get_to_address": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_to_address"}, case_creation.get_to_address.arguments); },
+"get_email_details": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_email_details"}, case_creation.get_email_details.arguments); },
+"link_module_to_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "link_module_to_case"}, case_creation.link_module_to_case.arguments); },
+"display_link_to_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_link_to_case"}, case_creation.display_link_to_case.arguments); },
+"display_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_case_by_mid"}, case_creation.display_case_by_mid.arguments); },
+"get_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_case_by_mid"}, case_creation.get_case_by_mid.arguments); },
+"get_groups_by_cases": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_groups_by_cases"}, case_creation.get_groups_by_cases.arguments); },
+"set_case": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_case"}, case_creation.set_case.arguments); },
+"get_files_by_message": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_files_by_message"}, case_creation.get_files_by_message.arguments); },
+"get_file_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_file_by_id"}, case_creation.get_file_by_id.arguments); },
+"get_fileinfo_by_id": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_fileinfo_by_id"}, case_creation.get_fileinfo_by_id.arguments); },
+"FlowChartDiv": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "FlowChartDiv"}, case_creation.FlowChartDiv.arguments); },
+"set_top_list": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "set_top_list"}, case_creation.set_top_list.arguments); },
+"display_manage_top_list": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_manage_top_list"}, case_creation.display_manage_top_list.arguments); },
+"display_manage_top_list_inner": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "display_manage_top_list_inner"}, case_creation.display_manage_top_list_inner.arguments); },
+"download_file": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "download_file"}, case_creation.download_file.arguments); },
+"get_posible_users_by_module": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "get_posible_users_by_module"}, case_creation.get_posible_users_by_module.arguments); },
+"displayUserModuleLink": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "displayUserModuleLink"}, case_creation.displayUserModuleLink.arguments); },
+"displayUserModuleDropDown": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "displayUserModuleDropDown"}, case_creation.displayUserModuleDropDown.arguments); },
+"updateUserInfo": function(){ return new PHPLiveX().Callback({"obj": "case_creation", "method": "updateUserInfo"}, case_creation.updateUserInfo.arguments); }
+};
+var casecreation = {
+ "get_defaults_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_defaults_by_module"}, casecreation.get_defaults_by_module.arguments); },
+"delete_case_type_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "delete_case_type_option"}, casecreation.delete_case_type_option.arguments); },
+"add_case_sub_type": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "add_case_sub_type"}, casecreation.add_case_sub_type.arguments); },
+"add_case_type": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "add_case_type"}, casecreation.add_case_type.arguments); },
+"manage_case_types": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_case_types"}, casecreation.manage_case_types.arguments); },
+"manage_case_types_inner": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_case_types_inner"}, casecreation.manage_case_types_inner.arguments); },
+"manage_case_types_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_case_types_option"}, casecreation.manage_case_types_option.arguments); },
+"set_case_activity": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_case_activity"}, casecreation.set_case_activity.arguments); },
+"create_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "create_case"}, casecreation.create_case.arguments); },
+"left_panel": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "left_panel"}, casecreation.left_panel.arguments); },
+"right_top_panel": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_top_panel"}, casecreation.right_top_panel.arguments); },
+"get_cases_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_cases_by_module"}, casecreation.get_cases_by_module.arguments); },
+"right_bottom_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_bottom_by_module"}, casecreation.right_bottom_by_module.arguments); },
+"right_bottom_by_case_id_array": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_bottom_by_case_id_array"}, casecreation.right_bottom_by_case_id_array.arguments); },
+"right_bottom_by_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_bottom_by_case"}, casecreation.right_bottom_by_case.arguments); },
+"create_case_by_array": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "create_case_by_array"}, casecreation.create_case_by_array.arguments); },
+"right_bottom_by_cases": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_bottom_by_cases"}, casecreation.right_bottom_by_cases.arguments); },
+"right_bottom_panel": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "right_bottom_panel"}, casecreation.right_bottom_panel.arguments); },
+"get_number_of_cases": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_number_of_cases"}, casecreation.get_number_of_cases.arguments); },
+"get_owner_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_owner_by_id"}, casecreation.get_owner_by_id.arguments); },
+"get_mail_by_case_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_mail_by_case_id"}, casecreation.get_mail_by_case_id.arguments); },
+"get_cases_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_cases_by_id"}, casecreation.get_cases_by_id.arguments); },
+"get_display_name_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_display_name_by_module"}, casecreation.get_display_name_by_module.arguments); },
+"get_notes_by_module_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_notes_by_module_id"}, casecreation.get_notes_by_module_id.arguments); },
+"GetVendorJson": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "GetVendorJson"}, casecreation.GetVendorJson.arguments); },
+"display_email_activity": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_email_activity"}, casecreation.display_email_activity.arguments); },
+"display_case_creation_panel": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_creation_panel"}, casecreation.display_case_creation_panel.arguments); },
+"set_created_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_created_case"}, casecreation.set_created_case.arguments); },
+"get_owner_name": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_owner_name"}, casecreation.get_owner_name.arguments); },
+"set_option_by_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_option_by_case"}, casecreation.set_option_by_case.arguments); },
+"display_case_options": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_options"}, casecreation.display_case_options.arguments); },
+"display_case_options_link": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_options_link"}, casecreation.display_case_options_link.arguments); },
+"get_sub_options": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_sub_options"}, casecreation.get_sub_options.arguments); },
+"display_case_type_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_type_option"}, casecreation.display_case_type_option.arguments); },
+"display_typeSubOption": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_typeSubOption"}, casecreation.display_typeSubOption.arguments); },
+"unset_sub_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "unset_sub_option"}, casecreation.unset_sub_option.arguments); },
+"display_case_sub_option_name": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_sub_option_name"}, casecreation.display_case_sub_option_name.arguments); },
+"change_order_number": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "change_order_number"}, casecreation.change_order_number.arguments); },
+"change_customer": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "change_customer"}, casecreation.change_customer.arguments); },
+"change_owner": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "change_owner"}, casecreation.change_owner.arguments); },
+"display_customer_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_customer_option"}, casecreation.display_customer_option.arguments); },
+"display_owner_option": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_owner_option"}, casecreation.display_owner_option.arguments); },
+"display_edit_case_order": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_edit_case_order"}, casecreation.display_edit_case_order.arguments); },
+"edit_case_order": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "edit_case_order"}, casecreation.edit_case_order.arguments); },
+"display_order_div": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_order_div"}, casecreation.display_order_div.arguments); },
+"display_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case"}, casecreation.display_case.arguments); },
+"display_case_creation": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_creation"}, casecreation.display_case_creation.arguments); },
+"showFlowChartTask": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "showFlowChartTask"}, casecreation.showFlowChartTask.arguments); },
+"set_note": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_note"}, casecreation.set_note.arguments); },
+"display_note_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_note_by_id"}, casecreation.display_note_by_id.arguments); },
+"manage_filters": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_filters"}, casecreation.manage_filters.arguments); },
+"display_add_filter": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_add_filter"}, casecreation.display_add_filter.arguments); },
+"get_all_filters": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_all_filters"}, casecreation.get_all_filters.arguments); },
+"get_description": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_description"}, casecreation.get_description.arguments); },
+"get_quialify_filter_options": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_quialify_filter_options"}, casecreation.get_quialify_filter_options.arguments); },
+"get_qualify_column_options": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_qualify_column_options"}, casecreation.get_qualify_column_options.arguments); },
+"get_filter": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_filter"}, casecreation.get_filter.arguments); },
+"new_qualify": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "new_qualify"}, casecreation.new_qualify.arguments); },
+"new_process": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "new_process"}, casecreation.new_process.arguments); },
+"delete_qualify": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "delete_qualify"}, casecreation.delete_qualify.arguments); },
+"update_filter_action": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "update_filter_action"}, casecreation.update_filter_action.arguments); },
+"delete_filter": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "delete_filter"}, casecreation.delete_filter.arguments); },
+"update_qualify": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "update_qualify"}, casecreation.update_qualify.arguments); },
+"edit_filter_process": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "edit_filter_process"}, casecreation.edit_filter_process.arguments); },
+"edit_filter_qualify": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "edit_filter_qualify"}, casecreation.edit_filter_qualify.arguments); },
+"create_new_filter": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "create_new_filter"}, casecreation.create_new_filter.arguments); },
+"display_filter": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_filter"}, casecreation.display_filter.arguments); },
+"manage_filters_inner": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_filters_inner"}, casecreation.manage_filters_inner.arguments); },
+"apply_bulk_actions": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "apply_bulk_actions"}, casecreation.apply_bulk_actions.arguments); },
+"custom_bulk_owner_button": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "custom_bulk_owner_button"}, casecreation.custom_bulk_owner_button.arguments); },
+"custom_bulk_flags_button": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "custom_bulk_flags_button"}, casecreation.custom_bulk_flags_button.arguments); },
+"searchMail": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "searchMail"}, casecreation.searchMail.arguments); },
+"use_template": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "use_template"}, casecreation.use_template.arguments); },
+"delete_template": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "delete_template"}, casecreation.delete_template.arguments); },
+"create_template": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "create_template"}, casecreation.create_template.arguments); },
+"save_template": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "save_template"}, casecreation.save_template.arguments); },
+"manage_templates": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_templates"}, casecreation.manage_templates.arguments); },
+"manage_templates_inner": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "manage_templates_inner"}, casecreation.manage_templates_inner.arguments); },
+"get_templates": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_templates"}, casecreation.get_templates.arguments); },
+"display_templates": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_templates"}, casecreation.display_templates.arguments); },
+"searchMail_old": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "searchMail_old"}, casecreation.searchMail_old.arguments); },
+"get_message_id_by_email": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_message_id_by_email"}, casecreation.get_message_id_by_email.arguments); },
+"get_email_by_modules": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_by_modules"}, casecreation.get_email_by_modules.arguments); },
+"get_email_address_from_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_address_from_module"}, casecreation.get_email_address_from_module.arguments); },
+"get_email_by_mid": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_by_mid"}, casecreation.get_email_by_mid.arguments); },
+"get_email_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_by_id"}, casecreation.get_email_by_id.arguments); },
+"get_related_mails": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_related_mails"}, casecreation.get_related_mails.arguments); },
+"get_mail_by_group": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_mail_by_group"}, casecreation.get_mail_by_group.arguments); },
+"get_email_address": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_address"}, casecreation.get_email_address.arguments); },
+"check_mid_by_group_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "check_mid_by_group_id"}, casecreation.check_mid_by_group_id.arguments); },
+"get_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_fct_by_id"}, casecreation.get_fct_by_id.arguments); },
+"get_user_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_user_by_id"}, casecreation.get_user_by_id.arguments); },
+"display_message": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_message"}, casecreation.display_message.arguments); },
+"set_archive": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_archive"}, casecreation.set_archive.arguments); },
+"get_dropdown": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_dropdown"}, casecreation.get_dropdown.arguments); },
+"array2options": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "array2options"}, casecreation.array2options.arguments); },
+"display_ccbox": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_ccbox"}, casecreation.display_ccbox.arguments); },
+"check_last_email": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "check_last_email"}, casecreation.check_last_email.arguments); },
+"check_status_by_mid": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "check_status_by_mid"}, casecreation.check_status_by_mid.arguments); },
+"remove_active_email": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "remove_active_email"}, casecreation.remove_active_email.arguments); },
+"set_active_email": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_active_email"}, casecreation.set_active_email.arguments); },
+"display_email_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_email_by_module"}, casecreation.display_email_by_module.arguments); },
+"check_fct_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "check_fct_by_id"}, casecreation.check_fct_by_id.arguments); },
+"displayStatusImage": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "displayStatusImage"}, casecreation.displayStatusImage.arguments); },
+"check_to": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "check_to"}, casecreation.check_to.arguments); },
+"get_email_addr_by_mailbox": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_addr_by_mailbox"}, casecreation.get_email_addr_by_mailbox.arguments); },
+"save_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "save_signature_by_module"}, casecreation.save_signature_by_module.arguments); },
+"get_signature_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_signature_by_module"}, casecreation.get_signature_by_module.arguments); },
+"display_mail_content": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_mail_content"}, casecreation.display_mail_content.arguments); },
+"getFilePath": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "getFilePath"}, casecreation.getFilePath.arguments); },
+"updateFileStatus": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "updateFileStatus"}, casecreation.updateFileStatus.arguments); },
+"get_to_address": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_to_address"}, casecreation.get_to_address.arguments); },
+"get_email_details": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_email_details"}, casecreation.get_email_details.arguments); },
+"link_module_to_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "link_module_to_case"}, casecreation.link_module_to_case.arguments); },
+"display_link_to_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_link_to_case"}, casecreation.display_link_to_case.arguments); },
+"display_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_case_by_mid"}, casecreation.display_case_by_mid.arguments); },
+"get_case_by_mid": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_case_by_mid"}, casecreation.get_case_by_mid.arguments); },
+"get_groups_by_cases": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_groups_by_cases"}, casecreation.get_groups_by_cases.arguments); },
+"set_case": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_case"}, casecreation.set_case.arguments); },
+"get_files_by_message": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_files_by_message"}, casecreation.get_files_by_message.arguments); },
+"get_file_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_file_by_id"}, casecreation.get_file_by_id.arguments); },
+"get_fileinfo_by_id": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_fileinfo_by_id"}, casecreation.get_fileinfo_by_id.arguments); },
+"FlowChartDiv": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "FlowChartDiv"}, casecreation.FlowChartDiv.arguments); },
+"set_top_list": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "set_top_list"}, casecreation.set_top_list.arguments); },
+"display_manage_top_list": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_manage_top_list"}, casecreation.display_manage_top_list.arguments); },
+"display_manage_top_list_inner": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "display_manage_top_list_inner"}, casecreation.display_manage_top_list_inner.arguments); },
+"download_file": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "download_file"}, casecreation.download_file.arguments); },
+"get_posible_users_by_module": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "get_posible_users_by_module"}, casecreation.get_posible_users_by_module.arguments); },
+"displayUserModuleLink": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "displayUserModuleLink"}, casecreation.displayUserModuleLink.arguments); },
+"displayUserModuleDropDown": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "displayUserModuleDropDown"}, casecreation.displayUserModuleDropDown.arguments); },
+"updateUserInfo": function(){ return new PHPLiveX().Callback({"obj": "casecreation", "method": "updateUserInfo"}, casecreation.updateUserInfo.arguments); }
+};
+var dynamic_page = {
+ "phplivex_page": function(){ return new PHPLiveX().Callback({"obj": "dynamic_page", "method": "phplivex_page"}, dynamic_page.phplivex_page.arguments); },
+"phplivex_options": function(){ return new PHPLiveX().Callback({"obj": "dynamic_page", "method": "phplivex_options"}, dynamic_page.phplivex_options.arguments); }
+};
+var fctsearch = {
+ "display_flowchart_task2": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "display_flowchart_task2"}, fctsearch.display_flowchart_task2.arguments); },
+"display_search_bar": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "display_search_bar"}, fctsearch.display_search_bar.arguments); },
+"search_flowchart_tasks2": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "search_flowchart_tasks2"}, fctsearch.search_flowchart_tasks2.arguments); },
+"SearchFct": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "SearchFct"}, fctsearch.SearchFct.arguments); },
+"search_flow_chart_tasks": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "search_flow_chart_tasks"}, fctsearch.search_flow_chart_tasks.arguments); },
+"showFctSearch": function(){ return new PHPLiveX().Callback({"obj": "fctsearch", "method": "showFctSearch"}, fctsearch.showFctSearch.arguments); }
+};
+var eapi_order = {
+ "display_order": function(){ return new PHPLiveX().Callback({"obj": "eapi_order", "method": "display_order"}, eapi_order.display_order.arguments); }
+};
+var cases = {
+ "set_page": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "set_page"}, cases.set_page.arguments); },
+"complete_case": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "complete_case"}, cases.complete_case.arguments); },
+"display_search": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "display_search"}, cases.display_search.arguments); },
+"display_search_bar": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "display_search_bar"}, cases.display_search_bar.arguments); },
+"search_cases": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "search_cases"}, cases.search_cases.arguments); },
+"case_by_module": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "case_by_module"}, cases.case_by_module.arguments); },
+"case_by_order": function(){ return new PHPLiveX().Callback({"obj": "cases", "method": "case_by_order"}, cases.case_by_order.arguments); }
+};
+var page = {
+ "decode_text": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "decode_text"}, page.decode_text.arguments); },
+"edit_dropdown_option": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "edit_dropdown_option"}, page.edit_dropdown_option.arguments); },
+"get_setting": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_setting"}, page.get_setting.arguments); },
+"set_setting": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_setting"}, page.set_setting.arguments); },
+"add_dropdown_option": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "add_dropdown_option"}, page.add_dropdown_option.arguments); },
+"get_email_addr_by_module": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_email_addr_by_module"}, page.get_email_addr_by_module.arguments); },
+"edit_dropdown_option_inner": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "edit_dropdown_option_inner"}, page.edit_dropdown_option_inner.arguments); },
+"get_cache_displayname": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_cache_displayname"}, page.get_cache_displayname.arguments); },
+"set_cache_displayname": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_cache_displayname"}, page.set_cache_displayname.arguments); },
+"setPageKeywords": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setPageKeywords"}, page.setPageKeywords.arguments); },
+"format_data": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "format_data"}, page.format_data.arguments); },
+"get_ajax": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_ajax"}, page.get_ajax.arguments); },
+"get_dropdown_array": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_dropdown_array"}, page.get_dropdown_array.arguments); },
+"get_dropdown_options": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_dropdown_options"}, page.get_dropdown_options.arguments); },
+"get_query_to_array": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_query_to_array"}, page.get_query_to_array.arguments); },
+"get_dropdown_options_query": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_dropdown_options_query"}, page.get_dropdown_options_query.arguments); },
+"display_searchbar_selector": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "display_searchbar_selector"}, page.display_searchbar_selector.arguments); },
+"array_to_options": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "array_to_options"}, page.array_to_options.arguments); },
+"module_displayname": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "module_displayname"}, page.module_displayname.arguments); },
+"encrypt": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "encrypt"}, page.encrypt.arguments); },
+"decrypt": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "decrypt"}, page.decrypt.arguments); },
+"phplivex_pagify": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "phplivex_pagify"}, page.phplivex_pagify.arguments); },
+"set_global_setting": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_global_setting"}, page.set_global_setting.arguments); },
+"get_global_setting": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_global_setting"}, page.get_global_setting.arguments); },
+"manage_global_setting": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "manage_global_setting"}, page.manage_global_setting.arguments); },
+"pagify_query": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "pagify_query"}, page.pagify_query.arguments); },
+"get_sort_table": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "get_sort_table"}, page.get_sort_table.arguments); },
+"pagify_query_inner": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "pagify_query_inner"}, page.pagify_query_inner.arguments); },
+"array_to_searchbar": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "array_to_searchbar"}, page.array_to_searchbar.arguments); },
+"set_sort_column": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_sort_column"}, page.set_sort_column.arguments); },
+"set_bulk_order_settings": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_bulk_order_settings"}, page.set_bulk_order_settings.arguments); },
+"set_column_settings": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "set_column_settings"}, page.set_column_settings.arguments); },
+"edit_column_settings": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "edit_column_settings"}, page.edit_column_settings.arguments); },
+"array_to_table": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "array_to_table"}, page.array_to_table.arguments); },
+"table_from_array": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "table_from_array"}, page.table_from_array.arguments); },
+"setAccessRules": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setAccessRules"}, page.setAccessRules.arguments); },
+"setAccessRulesType": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setAccessRulesType"}, page.setAccessRulesType.arguments); },
+"setPageDescription": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setPageDescription"}, page.setPageDescription.arguments); },
+"setPageTitle": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setPageTitle"}, page.setPageTitle.arguments); },
+"setInnerNav": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setInnerNav"}, page.setInnerNav.arguments); },
+"setActiveButton": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setActiveButton"}, page.setActiveButton.arguments); },
+"setImportCss": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss"}, page.setImportCss.arguments); },
+"setImportCss1": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss1"}, page.setImportCss1.arguments); },
+"setImportCss2": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss2"}, page.setImportCss2.arguments); },
+"setImportCss3": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss3"}, page.setImportCss3.arguments); },
+"setImportCss4": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss4"}, page.setImportCss4.arguments); },
+"setImportCss5": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss5"}, page.setImportCss5.arguments); },
+"setImportCss6": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss6"}, page.setImportCss6.arguments); },
+"setImportCss7": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss7"}, page.setImportCss7.arguments); },
+"setImportCss8": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss8"}, page.setImportCss8.arguments); },
+"setImportCss9": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss9"}, page.setImportCss9.arguments); },
+"setImportCss10": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss10"}, page.setImportCss10.arguments); },
+"setImportCss11": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss11"}, page.setImportCss11.arguments); },
+"setImportCss12": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss12"}, page.setImportCss12.arguments); },
+"setImportCss13": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setImportCss13"}, page.setImportCss13.arguments); },
+"SetDynamicCSS_1": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_1"}, page.SetDynamicCSS_1.arguments); },
+"SetDynamicCSS_2": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_2"}, page.SetDynamicCSS_2.arguments); },
+"SetDynamicCSS_3": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_3"}, page.SetDynamicCSS_3.arguments); },
+"SetDynamicCSS_4": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_4"}, page.SetDynamicCSS_4.arguments); },
+"SetDynamicCSS_5": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_5"}, page.SetDynamicCSS_5.arguments); },
+"SetDynamicCSS_6": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_6"}, page.SetDynamicCSS_6.arguments); },
+"SetDynamicCSS_7": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_7"}, page.SetDynamicCSS_7.arguments); },
+"SetDynamicCSS_8": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_8"}, page.SetDynamicCSS_8.arguments); },
+"SetDynamicCSS_9": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_9"}, page.SetDynamicCSS_9.arguments); },
+"SetDynamicCSS_10": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_10"}, page.SetDynamicCSS_10.arguments); },
+"SetDynamicCSS_11": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_11"}, page.SetDynamicCSS_11.arguments); },
+"SetDynamicCSS_12": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_12"}, page.SetDynamicCSS_12.arguments); },
+"SetDynamicCSS_13": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "SetDynamicCSS_13"}, page.SetDynamicCSS_13.arguments); },
+"setPageStyle": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setPageStyle"}, page.setPageStyle.arguments); },
+"setExtJavaScripts": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts"}, page.setExtJavaScripts.arguments); },
+"setExtJavaScripts1": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts1"}, page.setExtJavaScripts1.arguments); },
+"setExtJavaScripts2": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts2"}, page.setExtJavaScripts2.arguments); },
+"setExtJavaScripts3": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts3"}, page.setExtJavaScripts3.arguments); },
+"setExtJavaScripts4": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts4"}, page.setExtJavaScripts4.arguments); },
+"setExtJavaScripts5": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts5"}, page.setExtJavaScripts5.arguments); },
+"setExtJavaScripts6": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts6"}, page.setExtJavaScripts6.arguments); },
+"setExtJavaScripts7": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts7"}, page.setExtJavaScripts7.arguments); },
+"setExtJavaScripts8": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts8"}, page.setExtJavaScripts8.arguments); },
+"setExtJavaScripts9": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts9"}, page.setExtJavaScripts9.arguments); },
+"setExtJavaScripts10": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts10"}, page.setExtJavaScripts10.arguments); },
+"setExtJavaScripts11": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts11"}, page.setExtJavaScripts11.arguments); },
+"setExtJavaScripts12": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts12"}, page.setExtJavaScripts12.arguments); },
+"setExtJavaScripts13": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts13"}, page.setExtJavaScripts13.arguments); },
+"setExtJavaScripts14": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts14"}, page.setExtJavaScripts14.arguments); },
+"setExtJavaScripts15": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts15"}, page.setExtJavaScripts15.arguments); },
+"setExtJavaScripts16": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts16"}, page.setExtJavaScripts16.arguments); },
+"setExtJavaScripts17": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setExtJavaScripts17"}, page.setExtJavaScripts17.arguments); },
+"setCustomJavaScripts": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setCustomJavaScripts"}, page.setCustomJavaScripts.arguments); },
+"setBodyScript": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "setBodyScript"}, page.setBodyScript.arguments); },
+"enable_chat_head": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "enable_chat_head"}, page.enable_chat_head.arguments); },
+"enable_chat_body": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "enable_chat_body"}, page.enable_chat_body.arguments); },
+"page_object": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "page_object"}, page.page_object.arguments); },
+"displayPageTop": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "displayPageTop"}, page.displayPageTop.arguments); },
+"displayPageBottom": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "displayPageBottom"}, page.displayPageBottom.arguments); },
+"printDoctype": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printDoctype"}, page.printDoctype.arguments); },
+"printHTMLStart": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printHTMLStart"}, page.printHTMLStart.arguments); },
+"printHeadStart": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printHeadStart"}, page.printHeadStart.arguments); },
+"printCharEncod": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printCharEncod"}, page.printCharEncod.arguments); },
+"printTitle": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printTitle"}, page.printTitle.arguments); },
+"printMetaAuthor": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printMetaAuthor"}, page.printMetaAuthor.arguments); },
+"printMetaKeywords": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printMetaKeywords"}, page.printMetaKeywords.arguments); },
+"printMetaDesc": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printMetaDesc"}, page.printMetaDesc.arguments); },
+"printFOUC": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printFOUC"}, page.printFOUC.arguments); },
+"printExtJavaScripts": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printExtJavaScripts"}, page.printExtJavaScripts.arguments); },
+"printCustomJavaScripts": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printCustomJavaScripts"}, page.printCustomJavaScripts.arguments); },
+"printMainStyle": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printMainStyle"}, page.printMainStyle.arguments); },
+"printPageStyle": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printPageStyle"}, page.printPageStyle.arguments); },
+"printHeadEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printHeadEnd"}, page.printHeadEnd.arguments); },
+"printBodyStart": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printBodyStart"}, page.printBodyStart.arguments); },
+"menuLineString": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "menuLineString"}, page.menuLineString.arguments); },
+"page_link": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "page_link"}, page.page_link.arguments); },
+"menuFromArray": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "menuFromArray"}, page.menuFromArray.arguments); },
+"printHeader": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printHeader"}, page.printHeader.arguments); },
+"printContentAreaStart": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printContentAreaStart"}, page.printContentAreaStart.arguments); },
+"printContentColumnStart": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printContentColumnStart"}, page.printContentColumnStart.arguments); },
+"printContentColumnEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printContentColumnEnd"}, page.printContentColumnEnd.arguments); },
+"printInfoColumnEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printInfoColumnEnd"}, page.printInfoColumnEnd.arguments); },
+"printFooter": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printFooter"}, page.printFooter.arguments); },
+"printContentAreaEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printContentAreaEnd"}, page.printContentAreaEnd.arguments); },
+"printGoogAna": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printGoogAna"}, page.printGoogAna.arguments); },
+"printBodyEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printBodyEnd"}, page.printBodyEnd.arguments); },
+"printHTMLEnd": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "printHTMLEnd"}, page.printHTMLEnd.arguments); },
+"CheckAuthorization": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "CheckAuthorization"}, page.CheckAuthorization.arguments); },
+"gotoPage": function(){ return new PHPLiveX().Callback({"obj": "page", "method": "gotoPage"}, page.gotoPage.arguments); }
+};
+var eapi_account = {
+ "cache_account": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "cache_account"}, eapi_account.cache_account.arguments); },
+"search_account": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "search_account"}, eapi_account.search_account.arguments); },
+"get_account": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "get_account"}, eapi_account.get_account.arguments); },
+"get_account_orders": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "get_account_orders"}, eapi_account.get_account_orders.arguments); },
+"display_account_orders": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "display_account_orders"}, eapi_account.display_account_orders.arguments); },
+"display_contact_info": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "display_contact_info"}, eapi_account.display_contact_info.arguments); },
+"display_account_info": function(){ return new PHPLiveX().Callback({"obj": "eapi_account", "method": "display_account_info"}, eapi_account.display_account_info.arguments); }
+};
+var note = {
+ "add_note": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "add_note"}, note.add_note.arguments); },
+"get_user_array": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "get_user_array"}, note.get_user_array.arguments); },
+"display_note_by_module": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "display_note_by_module"}, note.display_note_by_module.arguments); },
+"display_note_by_module_inner": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "display_note_by_module_inner"}, note.display_note_by_module_inner.arguments); },
+"Create_Note": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "Create_Note"}, note.Create_Note.arguments); },
+"Get_Note": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "Get_Note"}, note.Get_Note.arguments); },
+"show_search_record": function(){ return new PHPLiveX().Callback({"obj": "note", "method": "show_search_record"}, note.show_search_record.arguments); }
+};
+var knowledgebase = {
+ "display_knowledgebase": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "display_knowledgebase"}, knowledgebase.display_knowledgebase.arguments); },
+"knowledgebase_search": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "knowledgebase_search"}, knowledgebase.knowledgebase_search.arguments); },
+"quicksearch": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "quicksearch"}, knowledgebase.quicksearch.arguments); },
+"phone_popout": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "phone_popout"}, knowledgebase.phone_popout.arguments); },
+"display_flyout": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "display_flyout"}, knowledgebase.display_flyout.arguments); },
+"create_knowledgebase": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "create_knowledgebase"}, knowledgebase.create_knowledgebase.arguments); },
+"manage_knowledgebase": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "manage_knowledgebase"}, knowledgebase.manage_knowledgebase.arguments); },
+"delete_knowledgebase": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "delete_knowledgebase"}, knowledgebase.delete_knowledgebase.arguments); },
+"save_knowledgebase": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "save_knowledgebase"}, knowledgebase.save_knowledgebase.arguments); },
+"manage_knowledgebase_inner": function(){ return new PHPLiveX().Callback({"obj": "knowledgebase", "method": "manage_knowledgebase_inner"}, knowledgebase.manage_knowledgebase_inner.arguments); }
+};
+
+</script>
+<div id="left_panel">
+  
+	   <div style="display: none;" id="content_left_panel" class="left_panel_flyout">           <script>     
+			function fileAttachment(){
+				$(function() {
+					$(".custom_file_upload_flyout_10_").uploadify({
+                                                                "wmode": 'transparent',
+								"uploader"       : "./upload_attachment/uploadify.swf",
+								"script"         : "./uploadify.php?rand=6bf969f51474443b4dea2bb01fc8d748",
+								"cancelImg"      : "./upload_attachment/cancel.png",
+								"folder"         : "6bf969f51474443b4dea2bb01fc8d748",
+								"multi"          : true,
+								"auto"           : true,
+								"queueID"        : "custom-queue_flyout_10_",
+								"queueSizeLimit" : 3,
+								"simUploadLimit" : 3,
+                                                                "buttonImg"     : './images/uploadify_icon2.png',
+								"removeCompleted": false,
+								"onSelectOnce"   : function(event,data) {},
+								"onAllComplete"  : function(event,data) {},
+                                                                "onCancel" : function(event,ID,fileObj,data){
+                                                                    alert( $.ajax('uploadify.php?rand=27318925829604&action=remove&filename=' + fileObj.name) );
+                                                                }
+					});				
+				});	
+			 }			
+		          		  
+			 function set_mail_to(to,cc,bcc){
+				if(cc != '' && bcc == '') {
+						return to_all = to + ',' + cc; 
+				}
+				else if(bcc != '' && cc == '') {
+						return to_all = to + ',' + bcc; 
+				}
+				else if(cc != '' && bcc != '') {
+						return to_all = to + ',' + cc + ',' + bcc;     
+				}
+				else {
+						return to_all = to;
+				}
+			 }
+           </script>
+           
+           <div id="compose_mail_div_flyout">
+             <form name="form" enctype="multipart/form-data" onsubmit="return false;">
+                 <table class="emaildashboard_compose emaildashboard_compose_flyout_compose" height="425px" width="100%">
+                   					   <tbody><tr>
+						  <th> </th>
+						  <td>
+							<span id="flyoutcompose_owner_">
+							   							</span>
+							<em class="emaildashboard_group">
+							  							</em>
+						  </td>
+					   </tr>
+                                           <tr><td colspan="2"><a style="z-index: 100;" onclick="tinyMCE.set_on_all('<p>NEW Template</p>' , { format : 'raw' } );emaildash.use_template( 'TBL_USER' , '10' , '4' , {} );" title="NEW Template"><button style="z-index: 100;">NEW Templ...<div class="template_button in_button" style="z-index: 100;"> </div></button></a><a style="z-index: 100;" onclick="$('.email_subject').val('Hello World From a template');tinyMCE.set_on_all('This is a test template' , { format : 'raw' } );emaildash.use_template( 'TBL_USER' , '10' , '3' , {} );" title="Another Template"><button style="z-index: 100;">Another T...<div class="template_button in_button" style="z-index: 100;"> </div></button></a><a style="z-index: 100;" onclick="$('.email_subject').val('Hello World From a template');tinyMCE.set_on_all('<p>This is a test template</p>' , { format : 'raw' } );emaildash.use_template( 'TBL_USER' , '10' , '2' , {} );" title="A very long title for a template"><button style="z-index: 100;">A very lo...<div class="template_button in_button" style="z-index: 100;"> </div></button></a><a style="z-index: 100;" onclick="$('.email_subject').val('Test');tinyMCE.set_on_all('<p>Test</p>' , { format : 'raw' } );emaildash.use_template( 'TBL_USER' , '10' , '5' , {} );" title="TestTemplate"><button style="z-index: 100;">TestTempl...<div class="template_button in_button" style="z-index: 100;"> </div></button></a><a style="z-index: 100;" onclick="tinyMCE.set_on_all('' , { format : 'raw' } );emaildash.use_template( 'TBL_USER' , '10' , '6' , {} );" title="IT Response"><button style="z-index: 100;">IT Respon...<div class="template_button in_button" style="z-index: 100;"> </div></button></a>            <a onclick="$('body').append('<div id=search_template title=Search >Title <input id=template_input /></div>');
+                          $('#search_template').dialog(
+                     {
+			resizable: false,
+			height:140,
+			modal: true,
+                        open: function( event , ui ){
+                            $('#template_input').autocomplete(
+                                {
+                                    source: 'search_templates.php',
+                                    select: function( event , ui ){
+                                        if( ui.item.subject != ''){
+                                            $('.email_subject').val( ui.item.subject ); 
+                                        }
+                                        tinyMCE.set_on_all( ui.item.body);
+                                        emaildash.use_template( 'TBL_USER' , '10' , ui.item.subject , {} );
+                                        $( '#search_template' ).dialog( 'destroy' ).remove();
+                                    }
+                                }
+                            );
+                        },
+			buttons: {
+				'Create Template': function() {
+					$( this ).dialog( 'destroy' ).remove();
+				},
+				Cancel: function() {
+					$( this ).dialog( 'destroy' ).remove();
+				}
+			}
+                    });
+                        "><button>search<div class="search_button in_button"> </div></button></a>
+           
+           </td>
+					   </tr><tr>
+						  <th><em class="FR">From :</em></th>
+						  <td>
+						   <input class="left_flyout" name="from_flyout" id="from_flyout" value="phpdemo@couleetechlink.com" type="text">
+						  </td>
+					   </tr>
+					   <tr>
+						  <th><em class="TO">To :</em></th>
+						  <td>
+							<input class="left_flyout" name="to_flyout" id="to_flyout" value="" type="text">
+						  </td>
+					   </tr>
+                                           					   <tr id="mail_ccbox_flyout">
+						  <th><div class="email_cc email_cc43311349" style="display:none;">Cc:</div></th>
+						  <td><div class="email_cc email_cc43311349" style="display:none;">
+							<input name="cc_flyout" id="cc_flyout" value="" class="left_flyout" type="text">
+                                                      </div></td>
+					   </tr>
+					   <tr id="mail_bccbox_flyout">
+						  <th><div class="email_bcc email_bcc43311349" style="display:none;">Bcc:</div></th>
+						  <td><div class="email_bcc email_bcc43311349" style="display:none;">
+							<input name="bcc_flyout" id="bcc_flyout" value="" class="left_flyout" type="text">
+                                                      </div></td>
+					  </tr>
+					  <tr>
+						  <th> </th>
+						  <td class="emaildashboard_cc_bcc">
+							  <em id="mail_cc_flyout">
+								 <a href="javascript:void(0);" onclick="javascript: $('.email_cc43311349').show(); document.getElementById('mail_ccbox_flyout').style.visibility='visible';
+															document.getElementById('mail_cc_flyout').style.display='none';">add cc</a> | </em>
+							  <em id="mail_bcc_flyout">
+								 <a href="javascript:void(0);" onclick="javascript: $('.email_bcc43311349').show();document.getElementById('mail_bccbox_flyout').style.visibility='visible';
+															document.getElementById('mail_bcc_flyout').style.display='none';">add bcc</a> | </em>
+						   
+							  Attach a file:
+							  <div id="custom-queue_flyout_10_"></div>
+							  <input id="custom_file_upload_flyout_10_" name="Filedata" class="left_flyout custom_file_upload_flyout_10_" type="file">						
+						  </td>
+					  </tr>
+					  <tr>
+						  <th><em class="SUB">Subject:</em></th>
+						  <td>
+								<input name="subject_flyout" id="subject_flyout" value="" class="left_flyout email_subject" type="text">
+						  </td>
+					  </tr>
+					  <tr>
+						  <th> </th>
+						  <td>
+							  <textarea aria-hidden="true" style="display: none;" name="message_flyout" id="message_flyout" class="left_flyout mceeditor_500 email_body">                                                             <p><br/><br/><br/><br/></p>
+                                                             <p class="comment_upper_line" ><em><span style="color: #999999;" >-----------------</span></em></p>
+                                                             <div class="comment_text" >
+                                                             <p><em><span style="color: #999999;">From: @</span></em></p>
+                                                             <p><em><span style="color: #999999;">Sent On: 1969-12-31 18:00:00</span></em></p>
+                                                             <p><em><span style="color: #999999;">Subject: </span></em></p>
+                                                             <div style="color: #999999 !important;">
+                                                                                                                           </div>
+                                                             <p><em><span style="color: #999999;">-----------------</span></em></p>
+                                                             </div>
+                                                               

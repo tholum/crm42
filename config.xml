@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config>
+	<red5Url>rtmp:/sip</red5Url>
+	<sipRealm>184.106.238.155</sipRealm>
+	<sipServer>184.106.238.155</sipServer>
+	<obProxy>184.106.238.155</obProxy>
+</config>

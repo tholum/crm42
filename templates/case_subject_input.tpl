@@ -1,0 +1,3 @@
+
+    <input data-input_type="case_subject" data-case_id="<%= case_id %>" value="<%= subject %>" 
+    onblur="if($(this).val() != $(this).parent().data('subject') ){ $(this).parent().data('subject' , $(this).val() );$(this).parent().attr('data-subject', $(this).val() ); $.getJSON('api.php?' + $.param( $.extend( { action: 'set_value' } , $(this).parent().data()  ) ) , slimcrm.cases.change_data  );}$(this).replaceWith( slimcrm.templates.case_subject_link( $(this).parent().data() ) )" />

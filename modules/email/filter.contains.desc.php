@@ -1,0 +1,1 @@
+<?php echo  ucfirst( $info['field'] ) . ' contains '  . $info['info']; ?>

@@ -1,0 +1,1 @@
+function( root , response ){$('.auto_resize_width_minus_350').css('width' , $(window).width() - 350 );run_on_start();}

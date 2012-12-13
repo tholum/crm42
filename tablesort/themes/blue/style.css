@@ -1,0 +1,39 @@
+/* tables */
+table.event_form  {
+	font-family:arial;
+	/*background-color: #CDCDCD;*/
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.event_form  thead tr th, table.event_form  tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.event_form  thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.event_form  tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.event_form  tbody tr.odd td {
+	background-color:#e6e7fb;
+}
+table.event_form  thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.event_form  thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.event_form  thead tr .headerSortDown, table.event_form  thead tr .headerSortUp {
+background-color: #8dbdd8;
+}

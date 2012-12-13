@@ -1,0 +1,1 @@
+function( root , response ){ run_on_start();slimcrm.bucket_search_apply(); }

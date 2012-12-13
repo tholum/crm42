@@ -1,0 +1,6 @@
+[INFO  2011-08-09 12:57:25,633] Migration scripts created for mysql://localhost/webdevel_erp
+Patch Script: /var/www/webdevel/git/platform/class/webdevel_erp.20110809.patch.sql
+Revert Script: /var/www/webdevel/git/platform/class/webdevel_erp.20110809.revert.sql
+[INFO  2011-08-09 13:03:08,443] Migration scripts created for mysql://localhost/webdevel_erp
+Patch Script: /var/www/webdevel/git/platform/class/webdevel_erp.20110809.patch.sql
+Revert Script: /var/www/webdevel/git/platform/class/webdevel_erp.20110809.revert.sql

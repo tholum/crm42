@@ -1,0 +1,1 @@
+<li><%= email %> <%= type %></li>

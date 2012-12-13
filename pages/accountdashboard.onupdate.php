@@ -1,0 +1,1 @@
+function( root , response ){ open_first_case(); $('.account_autocomplete').autocomplete({source: 'account_lookup.php' , select: function( event, ui ) { open_account( ui.item ); slimcrm.last_account=ui.item; }});}

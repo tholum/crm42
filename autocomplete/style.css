@@ -1,0 +1,208 @@
+ul.holder {
+border:1px solid #999;
+overflow:hidden;
+height:auto!important;
+margin:0;
+padding:4px 5px 0;
+}
+
+ul.holder li {
+float:left;
+list-style-type:none;
+white-space:nowrap;
+margin:0 5px 4px 0;
+}
+
+ul.holder li.bit-box,ul.holder li.bit-input input {
+font:11px "Lucida Grande", Verdana;
+}
+
+ul.holder li.bit-box {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+border-radius:6px;
+border:1px solid #CAD8F3;
+background:#DEE7F8;
+padding:1px 5px 2px;
+}
+
+ul.holder li.bit-box-focus {
+background:#598BEC;
+color:#fff;
+border-color:#598BEC;
+}
+
+ul.holder li.bit-input input {
+width:auto;
+overflow:visible;
+border:0;
+outline:0;
+margin:0;
+padding:3px 0 2px;
+}
+
+ul.holder li.bit-input input.smallinput {
+width:20px;
+}
+
+#add {
+border:1px solid #999;
+width:550px;
+margin:50px;
+padding:20px 30px 10px;
+}
+
+form ol li {
+list-style-type:none;
+}
+
+form ol {
+font:11px "Lucida Grande", Verdana;
+margin:0;
+padding:0;
+}
+
+form ol li.input-text {
+margin-bottom:10px;
+list-style-type:none;
+padding-bottom:10px;
+}
+
+form ol li.input-text label {
+font-weight:700;
+cursor:pointer;
+display:block;
+font-size:13px;
+margin-bottom:10px;
+}
+
+form ol li.input-text input {
+width:500px;
+font:11px "Lucida Grande", Verdana;
+border:1px solid #999;
+padding:5px 5px 6px;
+}
+
+form ul.holder {
+width:500px;
+}
+
+form ul {
+margin:0!important;
+}
+
+ul.holder li.bit-box,#apple-list ul.holder li.bit-box {
+padding-right:15px;
+position:relative;
+z-index:1000;
+}
+
+#apple-list ul.holder li.bit-input {
+margin:0;
+}
+
+#apple-list ul.holder li.bit-input input.smallinput {
+width:5px;
+}
+
+ul.holder li.bit-hover {
+background:#BBCEF1;
+border:1px solid #6D95E0;
+}
+
+ul.holder li.bit-box a.closebutton {
+position:absolute;
+right:4px;
+top:5px;
+display:block;
+width:7px;
+height:7px;
+font-size:1px;
+background:url(close.gif);
+}
+
+ul.holder li.bit-box a.closebutton:hover {
+background-position:7px;
+}
+
+ul.holder li.bit-box-focus a.closebutton,ul.holder li.bit-box-focus a.closebutton:hover {
+background-position:bottom;
+}
+
+.facebook-auto {
+display:none;
+position:absolute;
+width:512px;
+background:#eee;
+}
+
+.facebook-auto .default {
+border:1px solid #ccc;
+font-family:"Lucida Grande",Verdana;
+font-size:11px;
+border-width:0 1px 1px;
+padding:5px 7px;
+}
+
+.facebook-auto ul {
+display:none;
+overflow:auto;
+position:absolute;
+z-index:9999;
+margin:0;
+padding:0;
+}
+
+.facebook-auto ul li {
+z-index:1000;
+cursor:pointer;
+list-style-type:none;
+border:1px solid #ccc;
+font:11px "Lucida Grande", Verdana;
+background-color:#eee;
+border-width:0 1px 1px;
+margin:0;
+padding:5px 12px;
+}
+
+.facebook-auto ul li em {
+font-weight:700;
+font-style:normal;
+background:#ccc;
+}
+
+.facebook-auto ul li.auto-focus {
+background:#4173CC;
+color:#fff;
+}
+
+.facebook-auto ul li.auto-focus em {
+background:none;
+}
+
+.deleted {
+background-color:#4173CC!important;
+color:#fff!important;
+}
+
+.hidden {
+display:none;
+}
+
+#demo ul.holder li.bit-input input {
+border:1px solid #999;
+padding:2px 0 1px;
+}
+
+.ie6fix {
+height:1px;
+width:1px;
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+}
+
+:first-child+html ul.holder,* html ul.holder {
+padding-bottom:2px;
+}

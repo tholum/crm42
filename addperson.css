@@ -1,0 +1,61 @@
+div#new_person_dialog div.background {
+  padding: 12px 0 0 8px !important;
+}
+
+div#new_person_dialog div.background p.background_label {
+  color: #999;
+  font-size: 12px;  
+}
+
+div#new_person_dialog div.background p.background_label strong {
+  color: #000;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.company td  {
+  padding-top: 0;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.company th  {
+  padding-top: 7px;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.title td  {
+  padding-bottom: 0;
+}
+
+div#new_person_dialog div.background div.contact_method textarea {
+  width: 65%;
+  height: 70px;
+  min-width: 275px;
+  font-size: 12px;
+}
+
+div#new_person_dialog table.contact_types tr.addresses td,
+div#new_person_dialog table.contact_types tr.addresses th {
+  border-bottom: 1px solid #CCC;
+}
+
+div#new_person_dialog div.background {
+  padding: 12px 0 0 8px !important;
+}
+
+div#new_person_dialog div.background p.background_label {
+  color: #999;
+  font-size: 12px;  
+}
+
+div#new_person_dialog div.background p.background_label strong {
+  color: #000;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.company td  {
+  padding-top: 0;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.company th  {
+  padding-top: 7px;
+}
+
+div#new_person_dialog table.subject_header table.contact_types tr.title td  {
+  padding-bottom: 0;
+}

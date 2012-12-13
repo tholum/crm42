@@ -1,0 +1,406 @@
+/* CSS Document */
+
+/**************************************************** flyout css ******************************************************/
+
+div#left_panel {
+    position:fixed;
+	left:0px;
+	top:45px;
+	z-index:2;
+	float:left;
+	margin-left:0px;
+}
+
+div#content_left_panel {
+    height:600px;
+	width:600px;
+	float:left;
+	background-color:#f7f7f7;
+	border:1px #666 solid; 
+        overflow-y: auto;
+        overflow-x: hidden;
+	/*opacity:0.9;
+	filter:alpha(opacity=90);
+	display:none;
+	margin-left:12px;*/
+}
+
+div#tab_left_panel {
+    height:60px;
+	width:22px;
+	float:left;
+}
+
+td.checkbox_td{
+    padding: 10px;
+}
+
+div.left_tab_right_arrow {
+    background-image:url(../images/active_left_tab_closed.png);
+	background-repeat:no-repeat;
+}
+
+div.left_tab_left_arrow {
+    background-image:url(../images/active_left_tab_open.png);
+	background-repeat:no-repeat;
+}
+
+div.right_tab_right_arrow {
+    background-image:url(../images/active_right_tab_open.png);
+	background-repeat:no-repeat;
+	height:52px;
+}
+
+div.right_tab_left_arrow {
+    background-image:url(../images/active_right_tab_closed.png);
+	background-repeat:no-repeat;
+	height:52px;
+}
+
+div.right_tab_right_arrow_active {
+    background-image:url(../images/active_right_tab_open2.png);
+	background-repeat:no-repeat;
+	height:52px;
+}
+
+div.right_tab_left_arrow_active {
+    background-image:url(../images/active_right_tab_closed2.png);
+	background-repeat:no-repeat;
+	height:52px;
+}
+
+
+div#right_top_panel {
+    position:fixed;
+	right:0px;
+	top:45px;
+	z-index:2;
+	float:left;
+	margin-right:0px;
+}
+
+div#content_right_top_panel {
+    height:200px;
+	width:300px;
+	float:left;
+	background-color:#f7f7f7;
+	border:1px #666 solid; 
+	/*opacity:0.7;
+	filter:alpha(opacity=70);*/
+	display:none;
+	/*margin-right:12px;*/
+}
+
+div#tab_right_top_panel {
+    height:200px;
+	width:21px;
+	float:left;
+}
+
+div#right_bottom_panel {
+    position:fixed;
+	right:0px;
+	top:250px;
+	z-index:2;
+	float:left;
+	margin-right:0px;
+}
+.email_flyout_text{
+    width: 300px;
+}
+div#content_right_bottom_panel {
+    height:500px;
+	width:300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+	float:left;
+	background-color:#f7f7f7;
+	border:1px #666 solid;
+	/*opacity:0.8;
+	filter:alpha(opacity=80);*/
+	/*display:none;
+	margin-right:12px;*/
+}
+.case_flyout_display_note{
+    max-width: 295px !important;
+    
+}
+
+div#tab_right_bottom_panel {
+    height:300px;
+	width:21px;
+	float:left;
+}
+
+div.case_creation_div {
+    margin:10px;
+}
+
+.casecreation_case {
+    font-size: 12px;
+	font-weight:bold;    
+}
+
+.casecreation_group {
+    font-size: 12px;
+    font-weight:bold;
+}
+
+b.casecreation_text {
+    font-size: 12px;
+	color: black;
+}
+
+.casecreation_heading {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+span.casecreatin_subOption_display {
+    font-size:12px;
+}
+
+.casecreation_customer {
+    font-size: 12px;
+	font-weight:bold;
+}
+.casecreation_subject {
+    font-size: 12px;
+	font-weight:bold;
+}
+.casecreation_order {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+.casecreation_caseorigin {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+.casecreation_owner {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+.casecreation_casetype {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+.casecreation_casestatus {
+    font-size: 12px;
+	font-weight:bold;
+}
+
+.casecreation_noteby {
+    font-size: 12px;
+	font-weight:bold;
+	color:#C5C5C5;
+}
+
+.casecreation_notes {
+    font-size: 12px;
+    max-width: 290px !important;
+    overflow-y: auto;
+     word-wrap: break-word;
+}
+
+div.case_creation_activity_div {
+    max-height:100px;
+	min-height:5px;
+	width:260px;
+	overflow-y:scroll;
+	margin-left:15px;
+}
+
+div.case_creation_activity_div a {
+    font-size: 12px;
+}
+
+.casecreation_note_link {
+    font-size:12px;
+    color:#3366CC;
+}
+
+div.flyout_compose {
+    font-size: 12px;
+}
+
+/***************************************************emaildashboard css ******************************************************/
+
+div#show_info {
+    float:left;
+	width: 100%;
+	background-color:#FFFFFF;
+}
+
+div#show_flags {
+    display : none;
+}
+.show_flags_left{
+      display : none;
+    left: 0px;
+    z-index: 100000000000000;  
+}
+
+.show_flags{
+    
+    display : none;
+    right: 0px;
+    z-index: 100000000000000;
+}
+
+div#emaildashboard_case_add {
+    
+	z-index:1;
+	position:absolute;
+	background-color:#FFFFFF;
+	padding:10px;
+	border:1px #C5C5C5 solid;
+	margin-left:100px;
+}
+
+#emaildashboard_case_option {
+    width:80px;
+}
+
+div#toggleshowflags {
+	position:absolute;
+	background-color:#FFFFFF;
+	padding:3px;
+	border:1px #666 solid; 
+}
+.toggleshowflags {
+    z-index:1;
+	position:absolute;
+	background-color:#FFFFFF;
+	padding:3px;
+	border:1px #666 solid; 
+        display: none;
+}
+
+#emaildashboard_mail_info {
+    background:#FFFFFF;
+    position: relative;
+/*    top: 80px;*/
+}
+
+.emaildashboard_menutitle {
+    font-size: 13px;
+}
+
+.emaildashboard_menudate {
+    font-size: 13px
+}
+
+.emaildashboard_menutime {
+    font-size: 13px;
+}
+
+.emaildashboard_menusubject {
+    font-size: 13px;
+    /*color: green;*/
+}
+table.emaildashboard_list{
+    width: 100%;
+}
+.emaildashboard_list{
+ border-right:1px #000 solid;
+}
+.emaildashboard_list tr td {
+    border-bottom: 1px solid #000; 
+	/*border-right: 1px solid;*/
+}
+.emaildashboard_sublist tr td {
+    border-bottom: none; 
+	/*border-right: 1px solid;*/
+}
+
+.emaildashboard_sublist tr {
+	border-bottom: 1px none; 
+	border-right: 1px none;
+	width: 100%
+}
+
+b.emaildashboard_owner {
+    font-size: 13px;
+	color:#3366CC;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+b.emaildashboard_unclaimed {
+    font-size: 16px;
+	color:#FF0000;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.emaildashboard_compose th {
+    font-size: 12px;
+	color: #6D7B8D;
+}
+
+td.emaildashboard_cc_bcc {
+    font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.emaildashboard_fct {
+	font-size: 12px;
+	width: 100%
+}
+
+.emaildashboard_search_panel {
+	color:#FFFFFF;
+	font-size: 12px;
+	width: 100%
+}
+
+.emaildashboard_group_table td.emaildashboard_group_table_td {
+    padding: 10px;
+}
+
+.emaildashboard_group_file a {
+    text-decoration: underline;
+}
+
+.emaildashboard_distinct_time {
+    font-size: 10px;
+}
+
+.emaildashboard_distinct_mail {
+    border: 1px solid #C5C5C5;
+	width: 100%;
+}
+.emaildashboard_distinct_mail td {
+	padding: 1px 1px 1px 1px;
+}
+
+.emaildashboard_distinct_mail em.FR,.TO,.SUB {
+    font-size: 12px;
+	color: black;
+        
+}
+
+div.emaildashboard_distinct_option{
+    width: 100%;
+}
+div.emaildashboard_distinct_option em {
+    font-size: 12px;
+}
+
+/*.fct_image {
+    height:15px;
+}
+*/
+.emaildashboard_distinct_body {
+    font-size: 12px;
+}
+
+.emaildashboard_group {
+    font-size: 12px;
+	}
+        
+        textarea.left_emaildashboard{
+        width: 100%;  
+        }        

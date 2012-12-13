@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><AccessRequest><AccessLicenseNumber>0C816E6DFDBAC098</AccessLicenseNumber><UserId>couleetechlink</UserId><Password>xXz2J61T</Password></AccessRequest><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ShipmentConfirmRequest>
+<Request><RequestOption>nonvalidate</RequestOption>
+	<TransactionReference>
+		<CustomerContext>SlimCRM Shipment</CustomerContext>
+	</TransactionReference>
+</Request>
+<Shipment>
+    <Description>Order - 183</Description>
+    <Shipper>
+            <Name>Mt erp LLC</Name>
+            <AttentionName>Coulee Techlink</AttentionName>
+            <ShipperNumber>3Y4V08</ShipperNumber>
+            <PhoneNumber>6084522138</PhoneNumber>
+            <Address>
+                    <AddressLine1>150 Jack Berg Lane</AddressLine1>
+                    <City>Coon Vally</City>
+                    <StateProvinceCode>WI</StateProvinceCode>
+                    <PostalCode>54623</PostalCode>
+                    <CountryCode>US</CountryCode>
+            </Address>
+    </Shipper>
+    <ShipTo>
+            <CompanyName>Rod Holum</CompanyName>
+            <AttentionName>Rod Holum</AttentionName>
+            <PhoneNumber></PhoneNumber>
+            <Address>
+                    <AddressLine1>1129 riders club rd</AddressLine1>
+                    <City>Onalaska</City>
+                    <StateProvinceCode>WI</StateProvinceCode>
+                    <PostalCode>54650</PostalCode>
+                    <CountryCode>US</CountryCode>
+            </Address>
+    </ShipTo>
+    <ShipFrom>
+            <CompanyName>Mt erp LLC</CompanyName>
+            <AttentionName>Coulee Techlink</AttentionName>
+            <Address>
+                    <AddressLine1>150 Jack Berg Lane</AddressLine1>
+                    <City>Coon Vally</City>
+                    <StateProvinceCode>WI</StateProvinceCode>
+                    <PostalCode>54623</PostalCode>
+                    <CountryCode>US</CountryCode>
+            </Address>
+    </ShipFrom>
+    <PaymentInformation>
+        <Prepaid>
+            <BillShipper>
+                <AccountNumber>3Y4V08</AccountNumber>
+            </BillShipper>
+        </Prepaid>
+    </PaymentInformation>
+    
+    <Service>
+        <Code>03</Code>
+    </Service>
+    <Package>
+        <PackagingType>
+            <Code>02</Code>
+        </PackagingType>
+        <PackageWeight>
+            <UnitOfMeasurement>
+                <Code>LBS</Code>
+                <Description>Pounds</Description>
+            </UnitOfMeasurement>
+            <Weight>10</Weight>
+        </PackageWeight>
+        <PackageServiceOptions>
+        <InsuredValue>
+                        <Type>
+                                <Code>01</Code>
+                        </Type>
+                        <CurrencyCode>USD</CurrencyCode>
+                        <MonetaryValue>9.5</MonetaryValue>
+                </InsuredValue>
+        </PackageServiceOptions></Package>
+</Shipment>
+<LabelSpecification>
+    <LabelPrintMethod>
+        <Code>GIF</Code>
+        <Description>gif file</Description>
+    </LabelPrintMethod>
+    <HTTPUserAgent>Mozilla/4.5</HTTPUserAgent>
+    <LabelImageFormat>
+        <Code>GIF</Code>
+        <Description>GIF</Description>
+    </LabelImageFormat>
+</LabelSpecification>
+</ShipmentConfirmRequest>

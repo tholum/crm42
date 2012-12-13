@@ -1,0 +1,1 @@
+function( root , response ){ $('#ac1').autocomplete({source: 'account_lookup.php' , select: function( event, ui ) {alert( ui.item.Id );}});}
