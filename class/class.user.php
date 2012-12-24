@@ -2761,7 +2761,7 @@ function add_group(){
 	<?php
 	}
 
-	function UpdatePhoto($_POST,$_FILES){
+	function UpdatePhoto($dummy='',$var=''){
 		/*print_r($_FILES);
 		echo $_FILES['filename']['name'];
 		*/$filename = strip_tags($_POST['filename']);
